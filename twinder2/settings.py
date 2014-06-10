@@ -24,6 +24,12 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+
+TEMPLATE_DIRS = (
+    os.path.join(PROJECT_ROOT, "templates"),
+)
+
 ALLOWED_HOSTS = []
 
 
@@ -37,6 +43,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social_auth',
+    'twinder2',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -56,14 +63,15 @@ WSGI_APPLICATION = 'twinder2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
+#heroku config | grep HEROKU_POSTGRESQL
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'd578a8nurkous4',
         'USER' : 'avoskpsvhxyqdz',
         'PASSWORD' : 'nQnPLIPErQJ7mflnz6Aai_qdIh',
-        'HOST' : 'localhost',
-        'PORT' : '',
+        'HOST' : 'ec2-107-20-224-35.compute-1.amazonaws.com',
+        'PORT' : '5432',
     }
 }
 
@@ -89,7 +97,6 @@ STATIC_URL = '/static/'
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
 #DATABASES['default'] =  dj_database_url.config()
-#DATABASES = {'default' : dj_database_url.config(default=os.environ["postgres://avoskpsvhxyqdz:nQnPLIPErQJ7mflnz6Aai_qdIh@ec2-107-20-224-35.compute-1.amazonaws.com:5432/d578a8nurkous4"]) }
 
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
