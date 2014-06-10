@@ -63,17 +63,6 @@ WSGI_APPLICATION = 'twinder2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-#heroku config | grep HEROKU_POSTGRESQL
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd578a8nurkous4',
-        'USER' : 'avoskpsvhxyqdz',
-        'PASSWORD' : 'nQnPLIPErQJ7mflnz6Aai_qdIh',
-        'HOST' : 'ec2-107-20-224-35.compute-1.amazonaws.com',
-        'PORT' : '5432',
-    }
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -96,7 +85,7 @@ STATIC_URL = '/static/'
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
-#DATABASES['default'] =  dj_database_url.config()
+DATABASES['default'] =  dj_database_url.config()
 
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
