@@ -11,7 +11,7 @@ from django.core.serializers.json import DjangoJSONEncoder
 
 from models import *
 
-import uuid, sys, time, logging, json, os, shutil, datetime
+import uuid, sys, time, logging, json, os, shutil, datetime, logging
 
 
 
@@ -19,6 +19,7 @@ import uuid, sys, time, logging, json, os, shutil, datetime
 # it's hard to tell where stuff is coming from otherwise
 
 def test(request):
-	context = {'voila':'mon gars'}
+	person=Person.objects.all()
+	context = {'voila':person}
 	return render(request, 'test.html', context)
 
