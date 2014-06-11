@@ -8,17 +8,41 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.utils import timezone
 from django.templatetags.static import static
 from django.core.serializers.json import DjangoJSONEncoder
+from django.contrib.sessions.models import Session
+from django.shortcuts import render_to_response
+from django.template.context import RequestContext
 
 from models import *
 
-import uuid, sys, time, logging, json, os, shutil, datetime
+import uuid, sys, time, logging, json, os, shutil, datetime, logging
 
+session=Session.objects.all()
 
 
 # import * is shitty, please only import what you need
 # it's hard to tell where stuff is coming from otherwise
 
+def index(request):
+    if 'twitter_user' in session:
+        tweets=[{'embed_content': {'html':'Welcome'} ,'id':0 ,'text':''}]
+        posts=twitter.get('statuses/home_timeline.json')
+        if posts.data:
+            for tweet in posts.data:
+                tweets.append({'embed_content': embed_tweet(tweet['id']),'id': tweet['id'],'text': cleaning(tweet['text'])})
+            return render_template("index.html",tweets=tweets)
+    context={'tweets':''}
+    return render(request, 'index.html', context)
+
+
 def test(request):
-	context = {'voila':'mon gars'}
-	return render(request, 'test.html', context)
+	person=Person.objects.all()
+	context = {'voila':person}
+	return HttpResponse(context)
+
+def home(request):
+   context = RequestContext(request,
+                           {'request': request,
+                            'user': request.user})
+   return render_to_response('home.html',
+                             context_instance=context)
 
