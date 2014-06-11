@@ -53,6 +53,7 @@ coverage.xml
 docs/_build/
 
 venv
+example
 *.pyc
 staticfiles
 

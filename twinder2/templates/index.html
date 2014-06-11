@@ -1,29 +1,6 @@
-<!doctype html>
-{% load staticfiles %}
-<html lang="en">
-
-	<head>
-		<meta charset="utf-8">
-
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-		<link rel="stylesheet" href="http://cosmopol.is/cereal/css/reveal.min.css">
-		<link rel="stylesheet" href="{% static "serif.css"%}">
-
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-
-		<title> t w i n d e r </title>
-
-	</head>
-
-	<body>
-
-		<div class = "reveal">
+{% extends 'base.html' %}
+{% block main %}
+<div class = "reveal">
 			<div class = "slides">
 
 			  	{% if g.user and tweets %}
@@ -41,21 +18,19 @@
 					</section>
 
 				{% else %}
-				  	<section>
-				  		<h3>ayyyy welcome</h3>
-					  	click <a href="{% url 'login' %}">here</a> to login to reddit
+					{% if user and not user.is_anonymous %}
+					     <section>
+					       <a>Hello {{ user.get_full_name|default:user.username }}!</a>
+					     </section>
+				   	{% else %}
+				   		<section>
+				  		<h3>w e l c o me</h3>
+					  	click <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Here</a> to login to Twitter
 					</section>
-
+				   {% endif %}
+				  	
 				{% endif %}
 			</div>
 		</div>
 
-		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-		<script src="{% static "js/head.min.js" %}"></script>
-		<script src="{% static "js/reveal.js" %}"></script>
-		<script src="{% static "js/keyboard.js" %}"></script>
-		<script src="{% static "js/cereal.js" %}" type="text/javascript"></script>
-		<script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-	</body>
-</html>
+{% endblock %}

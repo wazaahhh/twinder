@@ -9,7 +9,8 @@ from django.utils import timezone
 from django.templatetags.static import static
 from django.core.serializers.json import DjangoJSONEncoder
 from django.contrib.sessions.models import Session
-
+from django.shortcuts import render_to_response
+from django.template.context import RequestContext
 
 from models import *
 
@@ -37,4 +38,11 @@ def test(request):
 	person=Person.objects.all()
 	context = {'voila':person}
 	return HttpResponse(context)
+
+def home(request):
+   context = RequestContext(request,
+                           {'request': request,
+                            'user': request.user})
+   return render_to_response('home.html',
+                             context_instance=context)
 
