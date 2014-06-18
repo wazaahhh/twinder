@@ -10,6 +10,7 @@ from django.templatetags.static import static
 from django.core.serializers.json import DjangoJSONEncoder
 from django.contrib.sessions.models import Session
 from django.shortcuts import render_to_response
+from django.views.decorators.csrf import csrf_exempt
 from django.template.context import RequestContext
 from social.apps.django_app.default.models import UserSocialAuth
 from settings import SOCIAL_AUTH_TWITTER_KEY, SOCIAL_AUTH_TWITTER_SECRET
@@ -26,7 +27,6 @@ session=Session.objects.all()
 
 def index(request):
     if request.user:
-    	print('bonjour')
     	tweets=[{'embed_content': {'html':'Welcome'} ,'id':0 ,'text':''}]
     	api=authentification()
     	posts=api.home_timeline()
@@ -62,3 +62,12 @@ def authentification():
 def embed_tweet(api,id):
         resp = api.get_oembed(id=str(id),omit_script='true',align='center',maxwidth=550)
         return resp
+
+@csrf_exempt
+def mark(id):
+	if id:
+		print(id)
+		return HttpResponse('True')
+	else: 
+		return HttpResponse('False')
+
