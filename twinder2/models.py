@@ -6,6 +6,7 @@ class Serie(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True, editable=True, blank=True, null=True)
 
 class Person(models.Model):
-    user = models.CharField(max_length=30)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
     object_id = models.IntegerField(max_length=100, blank=True, null=True)
     serie = models.ForeignKey(Serie, related_name='serie', blank=True, null=True)
