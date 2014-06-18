@@ -17,4 +17,5 @@ requests==2.3.0
 requests-oauthlib==0.4.1
 six==1.7.2
 static==1.0.2
+tweepy==2.3.0
 wsgiref==0.1.2

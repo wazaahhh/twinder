@@ -3,8 +3,7 @@
 <div class = "reveal">
 			<div class = "slides">
 
-			  	{% if g.user and tweets %}
-
+				{% if user and not user.is_anonymous and tweets %}
 			  		{%for tweet in tweets %}
 						<section id="{{tweet.id}}">
 						  	{{tweet.embed_content.html|safe}}
@@ -15,22 +14,20 @@
 					<section>
 						<h3> ~at end~ </h3>
 						press next......
+						<a>Hello {{ user.get_full_name|default:user.username }}!</a>
+						<a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
 					</section>
 
 				{% else %}
-					{% if user and not user.is_anonymous %}
-					     <section>
-					       <a>Hello {{ user.get_full_name|default:user.username }}!</a>
-					     </section>
-				   	{% else %}
 				   		<section>
 				  		<h3>w e l c o me</h3>
 					  	click <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Here</a> to login to Twitter
 					</section>
-				   {% endif %}
-				  	
 				{% endif %}
 			</div>
-		</div>
+</div>
+<div class="row"><div class="span6"><p style="center">c'est</p></div>
+  <div class="span6">la</div></div>
+
 
 {% endblock %}
