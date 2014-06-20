@@ -29,8 +29,17 @@ def index(request):
     if request.user:
     	tweets=[{'embed_content': {'html':'Welcome'} ,'id':0 ,'text':''}]
     	api=authentification()
-    	posts=api.home_timeline()
-    	
+    	try:
+    		user = UnUser.objects.get(user_name=request.user)
+    		if not user:
+    			new_user = UnUser.objects.create(user_name=request.user)
+    			new_user.save()
+    		else:
+    			print('user exist')
+    	except:
+    		pass
+
+    	posts=api.home_timeline(count=5)
     	if posts:
 			for tweet in posts:
 				tweets.append({'embed_content': embed_tweet(api,tweet.id),'id': tweet.id,'text': tweet.text})
@@ -64,10 +73,24 @@ def embed_tweet(api,id):
         return resp
 
 @csrf_exempt
-def mark(id):
-	if id:
-		print(id)
-		return HttpResponse('True')
-	else: 
+def mark(request):
+	if request.method == 'POST':
+		user_id = request.POST.get('user_id')
+		if user_id:
+			direction = request.POST.get('direction')
+			current_user = UnUser.objects.get(user_name=request.user)
+
+			if direction == 'left':
+				add_tweet = UneSerie.objects.create(left=True,user=current_user)
+				return HttpResponse('True')
+			elif direction == 'right':
+				add_tweet = UneSerie.objects.create(right=True,user=current_user)
+				return HttpResponse('True')
+			else:
+				print('error on direction')
+				return HttpResponse('False')
+		else:
+			return HttpResponse('False')
+	else:
 		return HttpResponse('False')
 

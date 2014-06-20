@@ -27,17 +27,15 @@ KeyboardJS.on('right', function() { mark(Reveal.getCurrentSlide(),'right') }, nu
 
 
 function mark(slide,direction) {
-	if ($(slide).attr('id')) {
+
+	if ($(slide).attr('id') && $(slide).attr('id') > 0 ) {
 		$.ajax({
+			url: "/mark/",
 			type: 'POST',
-			url: '/mark/',
-			contentType: 'application/json',
-			dataType:'json',
-			data: JSON.stringify({id: $(slide).attr('id'), csrfmiddlewaretoken: $( "#csrfmiddlewaretoken" ).val() }) ,
+			data: {'user_id': $(slide).attr('id'),'direction':direction},
 				success: function(data) {
-					alert('retweet');
-					alert(data);
+					if (data === false){alert('error')};
 				}
 		})
-	} else { alert('No post') }
+	}
 }
