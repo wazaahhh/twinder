@@ -24,11 +24,19 @@ session=Session.objects.all()
 
 # import * is shitty, please only import what you need
 # it's hard to tell where stuff is coming from otherwise
-
 def index(request):
     if request.user:
-    	tweets=[{'embed_content': {'html':'Welcome'} ,'id':0 ,'text':''}]
-    	api=authentification()
+    	tweets=[]
+    	print(request.user)
+    	
+    	#check if the user is not anonymous
+    	if request.user.is_authenticated():
+    		try:
+    			api=authentification(request.user)
+    		except:
+    			api=None
+    	
+    	#check if the user is in the db and insert it if no
     	try:
     		user = UnUser.objects.get(user_name=request.user)
     		if not user:
@@ -39,7 +47,16 @@ def index(request):
     	except:
     		pass
 
-    	posts=api.home_timeline(count=5)
+    	#if user is authenticated then retrieve the tweet from the timeline
+    	if request.user.is_authenticated():
+    		try:
+    			posts=api.home_timeline(count=5)
+    		except:
+    			posts=None
+    	else:
+    		posts=None
+    	
+    	#if posts then take the tweet and append then in a json
     	if posts:
 			for tweet in posts:
 				tweets.append({'embed_content': embed_tweet(api,tweet.id),'id': tweet.id,'text': tweet.text})
@@ -57,12 +74,13 @@ def test(request):
 	context = {'voila':person}
 	return HttpResponse(context)
 
-
+def survey(request):
+    return render(request, 'survey.html')
 #### functions ####
 
 #authentification procedure
-def authentification():
-	instance = UserSocialAuth.objects.get()
+def authentification(user):
+	instance = UserSocialAuth.objects.filter(user=user).get()
 	auth = tweepy.OAuthHandler(SOCIAL_AUTH_TWITTER_KEY, SOCIAL_AUTH_TWITTER_SECRET)
 	auth.set_access_token((instance.tokens).get('oauth_token'), (instance.tokens).get('oauth_token_secret'))
 	return tweepy.API(auth)

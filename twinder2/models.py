@@ -9,4 +9,7 @@ class UneSerie(models.Model):
 	left = models.BooleanField(default=False)
 	right = models.BooleanField(default=False)
 	created_at = models.DateTimeField(auto_now_add=True, editable=True, blank=True, null=True)
+	#hashtag
+	#text
+	#tweet_id
 	user = models.ForeignKey(UnUser)

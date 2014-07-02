@@ -14,6 +14,7 @@ urlpatterns = patterns('',
     url(r'^mark/$', views.mark, name='mark'),
     url('', include('django.contrib.auth.urls', namespace='auth')),
     url('', include('social.apps.django_app.urls', namespace='social')),
+    url(r'^survey/$', views.survey, name='survey'),
 
 
 )

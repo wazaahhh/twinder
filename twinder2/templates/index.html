@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block main %}
 <div class = "reveal">
 			<div class = "slides">
 
 				{% if user and not user.is_anonymous and tweets %}
+			  			<section id="information">
+						  	 <p>You are going to see tweets one by one from your timeline.</p>
+						  	 <p>Press Left arrow if you Like the tweet.</p>
+						  	 <p>Press right arrow if you dislike it.</p>
+						  	 <p>If you are ready press left.</p>
+						</section>
+
 			  		{%for tweet in tweets %}
 						<section id="{{tweet.id}}">
 						  	{{tweet.embed_content.html|safe}}
@@ -12,14 +20,14 @@
 					{% endfor %}
 
 					<section>
-						<h3> ~at end~ </h3>
-						press next......
-						<a>Hello {{ user.get_full_name|default:user.username }}!</a>
-						<a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
+						<h3> Thanks {{ user.get_full_name|default:user.username }}!</h3>
+						<p> After logout you will be rediricted to a 5 questions survey </p>
+						<a href="{% url 'auth:logout' %}?next=/survey">Logout</a>
 					</section>
 
 				{% else %}
-				   		<section>
+
+				   	<section>
 				  		<h3>w e l c o me</h3>
 					  	click <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Here</a> to login to Twitter
 					</section>
