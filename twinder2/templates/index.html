@@ -14,7 +14,8 @@
 
 			  		{%for tweet in tweets %}
 						<section id="{{tweet.id}}" value="{{tweet.text|safe}}">
-						  	{{tweet.embed_content.html|safe}}
+						  	{{tweet.text|safe}}
+						  	{{tweet.global|safe}}
 						</section>
 
 					{% endfor %}

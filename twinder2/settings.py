@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'social.apps.django_app.default',
     'twinder2',
+    'corsheaders',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -61,6 +62,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -140,4 +142,8 @@ SOCIAL_AUTH_TWITTER_KEY = '8hmy4paMAuAKBgtN2hZ4pMDjL'
 SOCIAL_AUTH_TWITTER_SECRET = 'kRcOVTiiwNlzghVdkLahNnrLU1xprbMTszfJFOcRkx2SDnMgn7'
 
 LOGIN_REDIRECT_URL = '/'
+
+CORS_ORIGIN_WHITELIST = (
+        'api.twitter.com'
+)
 

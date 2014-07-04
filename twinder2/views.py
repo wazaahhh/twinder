@@ -27,7 +27,6 @@ session=Session.objects.all()
 def index(request):
     if request.user:
     	tweets=[]
-    	print(request.user)
     	
     	#check if the user is not anonymous
     	if request.user.is_authenticated():
@@ -49,22 +48,29 @@ def index(request):
 
     	#if user is authenticated then retrieve the tweet from the timeline
     	if request.user.is_authenticated():
-    		try:
-    			posts=api.home_timeline(count=5)
-    		except:
-    			posts=None
+            try:
+                posts=api.home_timeline(count=150)
+            except:
+                posts=None
+                context = RequestContext(request,
+                           {'request': request,
+                            'user': request.user,
+                            'tweets': tweets,
+                            'error':True})
+                return render_to_response('index.html',context_instance=context) 
     	else:
     		posts=None
     	
     	#if posts then take the tweet and append then in a json
     	if posts:
 			for tweet in posts:
-				tweets.append({'embed_content': embed_tweet(api,tweet.id),'id': tweet.id,'text': tweet.text})
+				tweets.append({'id': tweet.id,'text': tweet.text,'global':tweet})
 			
 			context = RequestContext(request,
                            {'request': request,
                             'user': request.user,
-                            'tweets': tweets})
+                            'tweets': tweets,
+                            'error':False})
 			return render_to_response('index.html',context_instance=context)
 
 	return render(request, 'index.html')
@@ -114,5 +120,50 @@ def mark(request):
     else:
         return HttpResponse('False')
 
+def retrieve_tweets(api):
+    le_json=[]
+    try:
+        t_user=api.me()
+        friends=api.friends_ids(t_user.id)
+
+        for friend in friends:
+            le_tweets=[]
+            tweets=api.user_timeline(friend,count=5)
+            
+            for tweet in tweets:
+                le_tweets.append({'tweet_id':str(tweet.id),'tweet_txt':tweet.text})
+
+            le_json.append({'friend_id':friend,'tweets':le_tweets})
+        return json.dumps(le_json)
+
+    except Exception as e:
+        print(str(e))
+        return None
+
+
 def tweet_collection(request):
-    return HttpResponse('yolo')
+    if request.user:        
+        #check if the user is not anonymous
+        if request.user.is_authenticated():
+            try:
+                api=authentification(request.user)
+            except:
+                api=None
+        
+        #if user is authenticated then retrieve the tweet from the timeline
+        if request.user.is_authenticated():
+            le_json=retrieve_tweets(api)
+
+        else:
+            context = RequestContext(request,
+                       {'request': request,
+                        'user': request.user,
+                        'error':True})
+            return render_to_response('tweets.html',context_instance=context) 
+        
+        context = RequestContext(request,
+                       {'request': request,
+                        'user': request.user,
+                        'le_json':le_json,
+                        'error':False})
+    return render_to_response('tweets.html',context_instance=context)
