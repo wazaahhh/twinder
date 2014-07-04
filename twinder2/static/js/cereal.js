@@ -15,24 +15,24 @@ transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/c
 
 //keyboard modifications
 keyboard:{
-	'37':'next',
-	'39':'next',
+	'68':'next',
+	'76':'next',
 },
 
 });
 
-KeyboardJS.on('left', function() { mark(Reveal.getCurrentSlide(),'left') }, null)
-KeyboardJS.on('right', function() { mark(Reveal.getCurrentSlide(),'right') }, null)
+KeyboardJS.on('l', function() { mark(Reveal.getCurrentSlide(),'left') }, null)
+KeyboardJS.on('d', function() { mark(Reveal.getCurrentSlide(),'right') }, null)
 
 
 
 function mark(slide,direction) {
 
-	if ($(slide).attr('id') && $(slide).attr('id') > 0 ) {
+	if ($(slide).attr('id')){
 		$.ajax({
 			url: "/mark/",
 			type: 'POST',
-			data: {'user_id': $(slide).attr('id'),'direction':direction},
+			data: {'tweet_id': $(slide).attr('id'), 'tweet_text':$(slide).attr('value'), 'direction':direction},
 				success: function(data) {
 					if (data === false){alert('error')};
 				}

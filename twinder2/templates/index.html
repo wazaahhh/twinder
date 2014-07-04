@@ -5,7 +5,7 @@
 			<div class = "slides">
 
 				{% if user and not user.is_anonymous and tweets %}
-			  			<section id="information">
+			  			<section id="1" value="informations">
 						  	 <p>You are going to see tweets one by one from your timeline.</p>
 						  	 <p>Press Left arrow if you Like the tweet.</p>
 						  	 <p>Press right arrow if you dislike it.</p>
@@ -13,7 +13,7 @@
 						</section>
 
 			  		{%for tweet in tweets %}
-						<section id="{{tweet.id}}">
+						<section id="{{tweet.id}}" value="{{tweet.text|safe}}">
 						  	{{tweet.embed_content.html|safe}}
 						</section>
 

@@ -92,23 +92,27 @@ def embed_tweet(api,id):
 
 @csrf_exempt
 def mark(request):
-	if request.method == 'POST':
-		user_id = request.POST.get('user_id')
-		if user_id:
-			direction = request.POST.get('direction')
-			current_user = UnUser.objects.get(user_name=request.user)
+    if request.method == 'POST':
+        tweet_id = request.POST.get('tweet_id')
+        tweet_text = request.POST.get('tweet_text')
+        
+        if tweet_id:
+            direction = request.POST.get('direction')
+            current_user = UnUser.objects.get(user_name=request.user)
 
-			if direction == 'left':
-				add_tweet = UneSerie.objects.create(left=True,user=current_user)
-				return HttpResponse('True')
-			elif direction == 'right':
-				add_tweet = UneSerie.objects.create(right=True,user=current_user)
-				return HttpResponse('True')
-			else:
-				print('error on direction')
-				return HttpResponse('False')
-		else:
-			return HttpResponse('False')
-	else:
-		return HttpResponse('False')
+            if direction == 'left':
+                add_tweet = UneSerie3.objects.create(left=True,text=unicode(tweet_text),tweet_id=tweet_id,user=current_user)
+                return HttpResponse('True')
+            elif direction == 'right':
+                add_tweet = UneSerie3.objects.create(right=True,text=tweet_text,tweet_id=tweet_id,user=current_user)
+                return HttpResponse('True')
+            else:
+                print('error on direction')
+                return HttpResponse('False')
+        else:
+            return HttpResponse('False')
+    else:
+        return HttpResponse('False')
 
+def tweet_collection(request):
+    return HttpResponse('yolo')
