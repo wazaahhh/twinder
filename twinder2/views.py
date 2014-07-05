@@ -17,7 +17,7 @@ from settings import SOCIAL_AUTH_TWITTER_KEY, SOCIAL_AUTH_TWITTER_SECRET
 
 from models import *
 
-import uuid, sys, time, logging, json, os, shutil, datetime, logging, tweepy
+import uuid, sys, time, logging, json, os, shutil, datetime, logging, tweepy, random
 
 session=Session.objects.all()
 
@@ -120,25 +120,88 @@ def mark(request):
     else:
         return HttpResponse('False')
 
-def retrieve_tweets(api):
-    le_json=[]
+#retrieve tweets in function of the 10 friends
+def retrieve_tweets_api(api,request):
+    number_to_retrieve=20
     try:
-        t_user=api.me()
-        friends=api.friends_ids(t_user.id)
+        current_user = UnUser.objects.get(user_name=request.user)
+        number_tweets = LesTweets2.objects.filter(user=current_user).count()
+    except Exception as e:
+        print(str(e))
+        return False
 
-        for friend in friends:
-            le_tweets=[]
-            tweets=api.user_timeline(friend,count=5)
-            
-            for tweet in tweets:
-                le_tweets.append({'tweet_id':str(tweet.id),'tweet_txt':tweet.text})
+    #attention condition protection contre same user
+    if number_tweets == 0:
+        try:
+            t_user=api.me()
+            friends=api.friends_ids(t_user.id)
 
-            le_json.append({'friend_id':friend,'tweets':le_tweets})
-        return json.dumps(le_json)
+            for friend in friends:
+                le_tweets=[]
+                tweets=api.user_timeline(friend,count=number_to_retrieve)
+                #to do check if there is at least 20 tweets
+                print(len(tweets))
+                
+                for tweet in tweets:
+                    le_tweets.append({'tweet_id':str(tweet.id),'tweet_txt':tweet.text})
+                add_to_db(le_tweets,friend,request.user)
+        except Exception as e:
+            print(str(e))
+            return False
+
+#put tweets in db sort by friends
+def add_to_db(tweets,friend_id,user):
+    try:
+        current_user = UnUser.objects.get(user_name=user)
+        number_tweets = LesTweets2.objects.filter(user=current_user,friend_id=friend_id).count()
+    except Exception as e:
+        print(str(e))
+        return False
+
+    if number_tweets == 0:
+        try:
+            add_tweet = LesTweets2.objects.create(tweets=tweets,friend_id=friend_id,user=current_user)
+            print('add')
+        except Exception as e:
+            print(str(e))
+            return False
+    else:
+        print('in')
+
+#retrive json for test1 from db
+def retrieve_from_db(user,test):
+    le_json=[]
+    if test == 1:
+        try:
+            current_user = UnUser.objects.get(user_name=user)
+            f_tweets=LesTweets2.objects.filter(user=current_user).all()
+            for tweets in f_tweets:
+                tweets_f=[]
+                j_tweets=eval(tweets.tweets)
+                for tweet in j_tweets:
+                    tweets_f.append(tweet)
+                le_json += randomization_1(tweets_f,current_user,tweets.friend_id)
+            return le_json
+
+        except Exception as e:
+            print(str(e))
+            return False
+
+#get from tweet from 1 friend 5 tweets ranom and add id to db
+def randomization_1(tweets,user,friend_id):
+    random_ids=[]
+    la_list=random.sample(tweets,5)
+    for tweet in la_list:
+        random_ids.append(tweet['tweet_id'])
+    try:
+        tweets=LesTweets2.objects.get(user=user,friend_id=friend_id)
+        tweets.random_ids=random_ids
+        tweets.save()
+        return la_list
 
     except Exception as e:
         print(str(e))
-        return None
+        return False
 
 
 def tweet_collection(request):
@@ -152,7 +215,12 @@ def tweet_collection(request):
         
         #if user is authenticated then retrieve the tweet from the timeline
         if request.user.is_authenticated():
-            le_json=retrieve_tweets(api)
+            #le_json is nothing
+            le_json=retrieve_tweets_api(api,request)
+            try:
+                les_tweets=retrieve_from_db(request.user,1)
+            except:
+                pass
 
         else:
             context = RequestContext(request,
@@ -164,6 +232,6 @@ def tweet_collection(request):
         context = RequestContext(request,
                        {'request': request,
                         'user': request.user,
-                        'le_json':le_json,
+                        'le_json':json.dumps(les_tweets),
                         'error':False})
     return render_to_response('tweets.html',context_instance=context)

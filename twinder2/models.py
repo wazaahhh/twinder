@@ -12,3 +12,11 @@ class UneSerie3(models.Model):
 	text = models.CharField(max_length=200)
 	tweet_id = models.CharField(max_length=100)
 	user = models.ForeignKey(UnUser)
+
+class LesTweets2(models.Model):
+	tweets = models.TextField()
+	random_ids = models.TextField()
+	friend_id = models.CharField(max_length=100)
+	user = models.ForeignKey(UnUser)
+
+

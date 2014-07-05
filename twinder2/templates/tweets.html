@@ -70,7 +70,7 @@ problem
 		 function display(){
 
 		 	for (i=0;i<tweets_f.length;i++){
-		 		tweets=tweets_f[i].tweets;
+		 		var tweets=tweets_f[i].tweets;
 		 		for (j=0;j<tweets.length;j++){
 		 			var tweet=tweets[j].tweet_id;
 		 			streaming(tweet);
