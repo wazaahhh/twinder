@@ -46,43 +46,98 @@ def index(request):
     	except:
     		pass
 
+
     	#if user is authenticated then retrieve the tweet from the timeline
     	if request.user.is_authenticated():
+            le_json=retrieve_tweets_api(api,request)
             try:
-                posts=api.home_timeline(count=150)
+                les_tweets=retrieve_from_db(request.user,1)
             except:
-                posts=None
-                context = RequestContext(request,
-                           {'request': request,
-                            'user': request.user,
-                            'tweets': tweets,
-                            'error':True})
-                return render_to_response('index.html',context_instance=context) 
-    	else:
-    		posts=None
-    	
-    	#if posts then take the tweet and append then in a json
-    	if posts:
-			for tweet in posts:
-				tweets.append({'id': tweet.id,'text': tweet.text,'global':tweet})
-			
-			context = RequestContext(request,
-                           {'request': request,
-                            'user': request.user,
-                            'tweets': tweets,
-                            'error':False})
-			return render_to_response('index.html',context_instance=context)
+                pass
 
-	return render(request, 'index.html')
+        else:
+            context = RequestContext(request,
+                       {'request': request,
+                        'user': request.user,
+                        'error':False})
+            return render_to_response('index.html',context_instance=context) 
+        
+        context = RequestContext(request,
+                       {'request': request,
+                        'user': request.user,
+                        'le_json':json.dumps(les_tweets),
+                        'error':False})
+        return render_to_response('index.html',context_instance=context)
 
-def test(request):
-	person=Person.objects.all()
-	context = {'voila':person}
-	return HttpResponse(context)
+    else:
+	   return render(request, 'index.html')
+
+def index2(request):
+    current_user = UnUser.objects.get(user_name=request.user)
+    la_serie = UneSerie3.objects.filter(user=current_user).all().order_by('created_at')
+    
+    time_friends=time_spent(la_serie)
+    matrix=time_friends['time_matrix']
+
+    for friend in time_friends['friends']:
+        if ('dislike',friend) in matrix:
+            print(matrix[('dislike',friend)])
+        else:
+            print('no')
+        retrieve_from_db_2(friend,current_user,15)
+
+
+    context = RequestContext(request,
+                       {'request': request,
+                        'user': request.user,
+                        'le_json':'',
+                        'error':False})
+    return render_to_response('index2.html',context_instance=context)
+
+def retrieve_from_db_2(friend_id,user,number):
+    les_tweets=LesTweets2.objects.filter(friend_id=friend_id,user=user).all()
+    f_tweets=eval(les_tweets[0].tweets)
+    j_tweets=[]
+    for tweet in f_tweets:
+        if tweet['tweet_id'] not in les_tweets[0].random_ids:
+            j_tweets.append(tweet)
+
+    la_list=random.sample(j_tweets,number)
+
+    return la_list
+
+#return matrix with time spent and list of friends
+def time_spent(la_serie):
+    matrix={}
+    timer=0
+    friends=[]
+    for decision in la_serie:
+        if decision.tweet_id == '1':
+            timer=decision.created_at
+        else:
+            if decision.text not in friends:
+                friends.append(decision.text)
+
+            duration=decision.created_at-timer
+            timer=decision.created_at
+            if decision.left:
+                if ('like',decision.text) in matrix:
+                    matrix[('like',decision.text)]+=duration
+                else:
+                    matrix[('like',decision.text)] = duration
+            if decision.right:
+                if ('dislike',decision.text) in matrix:
+                    matrix[('dislike',decision.text)]+=duration
+                else:
+                    matrix[('dislike',decision.text)] = duration
+
+    return {'time_matrix': matrix,'friends':friends}
+
 
 def survey(request):
     return render(request, 'survey.html')
 #### functions ####
+
 
 #authentification procedure
 def authentification(user):
@@ -143,7 +198,7 @@ def retrieve_tweets_api(api,request):
                 print(len(tweets))
                 
                 for tweet in tweets:
-                    le_tweets.append({'tweet_id':str(tweet.id),'tweet_txt':tweet.text})
+                    le_tweets.append({'tweet_id':str(tweet.id),'tweet_txt':tweet.text,'friend_id':str(friend)})
                 add_to_db(le_tweets,friend,request.user)
         except Exception as e:
             print(str(e))
@@ -181,6 +236,7 @@ def retrieve_from_db(user,test):
                 for tweet in j_tweets:
                     tweets_f.append(tweet)
                 le_json += randomization_1(tweets_f,current_user,tweets.friend_id)
+            random.shuffle(le_json)
             return le_json
 
         except Exception as e:
