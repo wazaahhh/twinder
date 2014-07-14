@@ -14,13 +14,12 @@ from django.views.decorators.csrf import csrf_exempt
 from django.template.context import RequestContext
 from social.apps.django_app.default.models import UserSocialAuth
 from settings import SOCIAL_AUTH_TWITTER_KEY, SOCIAL_AUTH_TWITTER_SECRET
+from datetime import timedelta
+import math
 
 from models import *
 
 import uuid, sys, time, logging, json, os, shutil, datetime, logging, tweepy, random
-
-session=Session.objects.all()
-
 
 # import * is shitty, please only import what you need
 # it's hard to tell where stuff is coming from otherwise
@@ -30,21 +29,22 @@ def index(request):
     	
     	#check if the user is not anonymous
     	if request.user.is_authenticated():
-    		try:
-    			api=authentification(request.user)
-    		except:
-    			api=None
-    	
+            try:
+                api=authentification(request.user)
+            except Exception as e:
+                print(str(e))
+                return False
+                api=None
     	#check if the user is in the db and insert it if no
     	try:
-    		user = UnUser.objects.get(user_name=request.user)
-    		if not user:
-    			new_user = UnUser.objects.create(user_name=request.user)
-    			new_user.save()
-    		else:
-    			print('user exist')
-    	except:
-    		pass
+    		user=UnUser.objects.get(user_name=request.user)
+        except:
+            user=None
+
+        if not user:
+            UnUser.objects.create(first_name=request.user,last_name=request.user,user_name=request.user)
+        else:
+            print('user exist')
 
 
     	#if user is authenticated then retrieve the tweet from the timeline
@@ -78,21 +78,59 @@ def index2(request):
     
     time_friends=time_spent(la_serie)
     matrix=time_friends['time_matrix']
+    final_time_friends=[]
+    total_time=datetime.timedelta(0, 0, 0, 0)
+
 
     for friend in time_friends['friends']:
         if ('dislike',friend) in matrix:
-            print(matrix[('dislike',friend)])
+            final_time_friends.append({'friend':friend,'time':matrix[('dislike',friend)]})
+            total_time += matrix[('dislike',friend)]
         else:
-            print('no')
-        retrieve_from_db_2(friend,current_user,15)
+            final_time_friends.append({'friend':friend,'time':0})
 
+    les_tweets= get_numbers_tweets(final_time_friends,total_time,current_user)
+    random.sample(les_tweets,min(50,len(les_tweets)))
+    random.shuffle(les_tweets)
 
     context = RequestContext(request,
                        {'request': request,
                         'user': request.user,
-                        'le_json':'',
+                        'le_json':json.dumps(les_tweets),
                         'error':False})
-    return render_to_response('index2.html',context_instance=context)
+    return render_to_response('index.html',context_instance=context)
+
+def get_numbers_tweets(final_time_friends,total_time,user):
+    ratios=[]
+    les_tweets=[]
+    la_serie=[]
+    maximum=0
+    minimum=100
+    for time in final_time_friends:
+        if time['time'] != 0:
+            ratio=(time['time'].total_seconds()/total_time.total_seconds())*100
+            if (ratio > maximum):
+                maximum = ratio
+            if(ratio < minimum):
+                minimum = ratio
+            ratios.append({'friend':time['friend'],'ratio':ratio})
+        else:
+            minimum=0
+            ratios.append({'friend':time['friend'],'ratio':0})
+
+    for ratio in ratios:
+        if ratio['ratio'] == 0:
+            la_serie = retrieve_from_db_2(ratio['friend'],user,15)
+        else:
+            la_serie = retrieve_from_db_2(ratio['friend'],user,math_formula(minimum,maximum,ratio['ratio']))
+        les_tweets += la_serie
+    return les_tweets
+
+def math_formula(mini,maxi,ratio):
+    dec, inte = math.modf(15*(ratio-mini)/(maxi-mini))
+    return inte
+
+
 
 def retrieve_from_db_2(friend_id,user,number):
     les_tweets=LesTweets2.objects.filter(friend_id=friend_id,user=user).all()
@@ -102,7 +140,7 @@ def retrieve_from_db_2(friend_id,user,number):
         if tweet['tweet_id'] not in les_tweets[0].random_ids:
             j_tweets.append(tweet)
 
-    la_list=random.sample(j_tweets,number)
+    la_list=random.sample(j_tweets,int(number))
 
     return la_list
 
@@ -178,6 +216,7 @@ def mark(request):
 #retrieve tweets in function of the 10 friends
 def retrieve_tweets_api(api,request):
     number_to_retrieve=20
+    number_of_friends=10
     try:
         current_user = UnUser.objects.get(user_name=request.user)
         number_tweets = LesTweets2.objects.filter(user=current_user).count()
@@ -186,23 +225,33 @@ def retrieve_tweets_api(api,request):
         return False
 
     #attention condition protection contre same user
-    if number_tweets == 0:
+    if number_tweets != 0:
         try:
             t_user=api.me()
             friends=api.friends_ids(t_user.id)
+            random.shuffle(friends)
+            i=0
 
             for friend in friends:
                 le_tweets=[]
                 tweets=api.user_timeline(friend,count=number_to_retrieve)
-                #to do check if there is at least 20 tweets
-                print(len(tweets))
-                
-                for tweet in tweets:
-                    le_tweets.append({'tweet_id':str(tweet.id),'tweet_txt':tweet.text,'friend_id':str(friend)})
-                add_to_db(le_tweets,friend,request.user)
+                print(tweets)
+                if (i < 10):
+                    if (len(tweets) == 20):
+                        print(i)
+                        i += 1
+                        for tweet in tweets:
+                            le_tweets.append({'tweet_id':str(tweet.id),'tweet_txt':tweet.text,'friend_id':str(friend)})
+                        #add_to_db(le_tweets,friend,request.user)
+                else:
+                    break
+
         except Exception as e:
             print(str(e))
             return False
+
+def get_correct_friends(friends):
+    print(friends)
 
 #put tweets in db sort by friends
 def add_to_db(tweets,friend_id,user):
@@ -258,6 +307,48 @@ def randomization_1(tweets,user,friend_id):
     except Exception as e:
         print(str(e))
         return False
+
+def statistics(request):
+    current_user = UnUser.objects.get(user_name=request.user)
+    la_serie_1 = UneSerie3.objects.filter(user=current_user).order_by('created_at').all()[51:102]
+    les_stats_1=time_spent(la_serie_1)
+
+    print('-----serie1------')
+    matrix=les_stats_1['time_matrix']
+    total_time=datetime.timedelta(0, 0, 0, 0)
+
+    for friend in les_stats_1['friends']:
+        if ('dislike',friend) in matrix:
+            print(matrix[('dislike',friend)])
+            total_time += matrix[('dislike',friend)]
+        else:
+            print(0)
+    print(total_time)
+    print('---serie2----')
+    la_serie_2 = UneSerie3.objects.filter(user=current_user).order_by('created_at').all()[:51]
+    les_stats_2=time_spent(la_serie_2)
+
+    matrix=les_stats_2['time_matrix']
+    total_time=datetime.timedelta(0, 0, 0, 0)
+
+    for friend in les_stats_2['friends']:
+        if ('dislike',friend) in matrix:
+            print(matrix[('dislike',friend)])
+            total_time += matrix[('dislike',friend)]
+        else:
+            print(0)
+    print(total_time)
+    return HttpResponse('yolo')
+
+def usure(request):
+    request.session.flush()
+
+    context = RequestContext(request,
+               {'request': request,
+                'user': request.user,
+                'error':False})
+    return render_to_response('logout.html',context_instance=context) 
+
 
 
 def tweet_collection(request):

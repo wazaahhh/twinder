@@ -4,10 +4,79 @@
 	{%if error %}
 	problem
 	{% else %}
-	
+		{% if user and not user.is_anonymous %}
+			<div class = "reveal">
+				<div class = "slides">
+					<section id="1">
+						test
+					</section>
+				</div>
+			</div>
+
+									<!--<section>
+				<h3> Thanks {{ user.get_full_name|default:user.username }}!</h3>
+				<p> After logout you will be rediricted to a 5 questions survey </p>
+				<a href="{% url 'auth:logout' %}?next=/survey">Logout</a>
+			</section>-->
+		{% else %}
+			<div class = "reveal">
+				<div class = "slides">
+				   	<section>
+				  		<h3>w e l c o me</h3>
+					  	click <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Here</a> to login to Twitter
+					</section>
+				</div>
+			</div>
+		{% endif %}
 
 	{% endif %}
 
+	{%if le_json %}
+	<script type="text/javascript">
+		 var tweets_f = $.parseJSON("{{le_json|escapejs}}");
+	</script>
+	{% else %}
+	<script type="text/javascript">
+	var tweets_f = '';
+	</script>
+	{% endif %}
 
+
+<script type="text/javascript">
+
+	 display();
+	 
+	 function display(){
+
+	 	for (i=0;i<tweets_f.length;i++){
+	 		var tweet_id=tweets_f[i].tweet_id;
+	 		var friend_id=tweets_f[i].friend_id;
+	 		streaming(tweet_id,friend_id);
+	 	}
+	 }
+
+	function streaming(id,friend){
+				$.ajax({
+				dataType: "jsonp",
+				url: "https://api.twitter.com/1/statuses/oembed.json?id="+id+'&align=center',
+				type: 'GET',
+					success: function(data) {
+						if (data.html){
+							$(".slides").append('<section id="'+id+'" value="'+friend+'">'+data.html+'</section>');
+						}
+					},
+				    error: function(XMLHttpRequest, textStatus, errorThrown) { 
+				        alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+				    },    	
+			});
+	}
+
+	function add_last(){
+		if ($('section').length=== 51){
+			$(".slides").append('<section><h3> Thanks {{ user.get_full_name|default:user.username }}!</h3><p> After logout you will be rediricted to a 5 questions survey </p><a href="{% url "auth:logout" %}?next=/survey">Logout</a></section>');
+		}
+	}
+
+</script>
 
 {% endblock %}
