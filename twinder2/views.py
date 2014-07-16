@@ -225,7 +225,7 @@ def retrieve_tweets_api(api,request):
         return False
 
     #attention condition protection contre same user
-    if number_tweets != 0:
+    if number_tweets == 0:
         try:
             t_user=api.me()
             friends=api.friends_ids(t_user.id)
@@ -242,7 +242,7 @@ def retrieve_tweets_api(api,request):
                         i += 1
                         for tweet in tweets:
                             le_tweets.append({'tweet_id':str(tweet.id),'tweet_txt':tweet.text,'friend_id':str(friend)})
-                        #add_to_db(le_tweets,friend,request.user)
+                        add_to_db(le_tweets,friend,request.user)
                 else:
                     break
 
