@@ -14,6 +14,13 @@
 		<link rel="stylesheet" href="{% static "serif.css"%}">
 		<link rel="stylesheet" href="{% static "bootstrap.css"%}">
 
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="{% static "js/head.min.js" %}"></script>
+		<script src="{% static "js/reveal.js" %}"></script>
+		<script src="{% static "js/keyboard.js" %}"></script>
+		<script src="{% static "js/cereal.js" %}" type="text/javascript"></script>
+		<script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -25,13 +32,6 @@
 	<body>
 		 {% block main %}{% endblock %}
 		 
-		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-		<script src="{% static "js/head.min.js" %}"></script>
-		<script src="{% static "js/reveal.js" %}"></script>
-		<script src="{% static "js/keyboard.js" %}"></script>
-		<script src="{% static "js/cereal.js" %}" type="text/javascript"></script>
-		<script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
 	</body>
 </html>
 
