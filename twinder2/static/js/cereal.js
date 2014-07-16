@@ -18,12 +18,13 @@ $(document).ready(function(){
 	keyboard:{
 		'68':'next',
 		'76':'next',
+		'70':'next',
 	},
 
 	});
 
 	KeyboardJS.on('l', function() { mark(Reveal.getCurrentSlide(),'left');add_last() }, null)
-	KeyboardJS.on('d', function() { mark(Reveal.getCurrentSlide(),'right');add_last() }, null)
+	KeyboardJS.on('f', function() { mark(Reveal.getCurrentSlide(),'right');add_last() }, null)
 
 });
 

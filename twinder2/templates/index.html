@@ -8,16 +8,12 @@
 			<div class = "reveal">
 				<div class = "slides">
 					<section id="1">
-						test
+						Ready!</br>
+						Press L to start.
 					</section>
 				</div>
 			</div>
 
-									<!--<section>
-				<h3> Thanks {{ user.get_full_name|default:user.username }}!</h3>
-				<p> After logout you will be rediricted to a 5 questions survey </p>
-				<a href="{% url 'auth:logout' %}?next=/survey">Logout</a>
-			</section>-->
 		{% else %}
 			<div class = "reveal">
 				<div class = "slides">
@@ -46,6 +42,7 @@
 
 	 display();
 	 
+	 //display tweet after streaming them
 	 function display(){
 
 	 	for (i=0;i<tweets_f.length;i++){
@@ -55,6 +52,7 @@
 	 	}
 	 }
 
+	//Stream tweets tks to ajax call
 	function streaming(id,friend){
 				$.ajax({
 				dataType: "jsonp",
@@ -71,9 +69,10 @@
 			});
 	}
 
+	//add last page
 	function add_last(){
 		if ($('section').length=== 51){
-			$(".slides").append('<section><h3> Thanks {{ user.get_full_name|default:user.username }}!</h3><p> After logout you will be rediricted to a 5 questions survey </p><a href="{% url "auth:logout" %}?next=/survey">Logout</a></section>');
+			$(".slides").append('<section><h3> Thanks {{ user.get_full_name|default:user.username }}!</h3>This is the end</section>');
 		}
 	}
 
