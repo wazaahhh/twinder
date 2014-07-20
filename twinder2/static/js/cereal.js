@@ -16,7 +16,6 @@ $(document).ready(function(){
 
 	//keyboard modifications
 	keyboard:{
-		'68':'next',
 		'76':'next',
 		'70':'next',
 	},
@@ -34,7 +33,7 @@ function mark(slide,direction) {
 		$.ajax({
 			url: "/mark/",
 			type: 'POST',
-			data: {'tweet_id': $(slide).attr('id'), 'tweet_text':$(slide).attr('value'), 'direction':direction},
+			data: {'tweet_id': $(slide).attr('id'), 'friend_id':$(slide).attr('value'), 'txt_length':$(slide).attr('name'), 'direction':direction},
 				success: function(data) {
 					if (data === false){alert('error')};
 				}

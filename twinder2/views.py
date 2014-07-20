@@ -52,7 +52,7 @@ def index(request):
     	if request.user.is_authenticated():
             le_json=retrieve_tweets_api(api,request)
             try:
-                les_tweets=retrieve_from_db(request.user,1)
+                les_tweets=retrieve_from_db(request.user)
             except:
                 pass
 
@@ -76,18 +76,18 @@ def index(request):
 # Display for the test B time
 def index2(request):
     current_user = UnUser.objects.get(user_name=request.user)
-    la_serie = UneSerie3.objects.filter(user=current_user).all().order_by('created_at')
+    la_serie = UneSerie4.objects.filter(user=current_user).all().order_by('created_at')
     
     time_friends=time_spent(la_serie)
     matrix=time_friends['time_matrix']
     final_time_friends=[]
-    total_time=datetime.timedelta(0, 0, 0, 0)
+    total_time=0
 
 
     for friend in time_friends['friends']:
         final_time_friends.append({'friend':friend,'time':matrix[friend]})
-        print(matrix[friend])
         total_time += matrix[friend]
+
 
     les_tweets= get_numbers_tweets(final_time_friends,total_time,current_user)
     
@@ -107,27 +107,25 @@ def index2(request):
 # Display for the test B likes
 def index3(request):
     current_user = UnUser.objects.get(user_name=request.user)
-    la_serie = UneSerie3.objects.filter(user=current_user).all().order_by('created_at')
+    la_serie = UneSerie4.objects.filter(user=current_user).all()
     
-    time_friends=time_spent(la_serie)
-    matrix=time_friends['time_matrix']
+    number_friends=number_like(la_serie)
+    matrix=number_friends['number_matrix']
     final_time_friends=[]
-    total_time=datetime.timedelta(0, 0, 0, 0)
 
-
-    for friend in time_friends['friends']:
-        if ('dislike',friend) in matrix:
-            final_time_friends.append({'friend':friend,'time':matrix[('dislike',friend)]})
-            total_time += matrix[('dislike',friend)]
+    for friend in number_friends['friends']:
+        if ('like',friend) in matrix:
+            final_time_friends.append({'friend':friend,'number':matrix[('like',friend)]})
         else:
-            final_time_friends.append({'friend':friend,'time':0})
+            final_time_friends.append({'friend':friend,'number':0})
 
-    les_tweets= get_numbers_tweets(final_time_friends,total_time,current_user)
+    les_tweets= get_numbers_tweets_l(final_time_friends,current_user)
     if (min(50,len(les_tweets))<50):
         print('tweet number is lower than 50!!')
 
     les_tweets= random.sample(les_tweets,min(50,len(les_tweets)))
     random.shuffle(les_tweets)
+
 
     context = RequestContext(request,
                        {'request': request,
@@ -140,7 +138,7 @@ def index3(request):
 
 #retrieve tweets in function of the 10 friends
 def retrieve_tweets_api(api,request):
-    number_to_retrieve=20
+    number_to_retrieve=25
     number_of_friends=10
     try:
         current_user = UnUser.objects.get(user_name=request.user)
@@ -161,7 +159,7 @@ def retrieve_tweets_api(api,request):
                 le_tweets=[]
                 tweets=api.user_timeline(friend,count=number_to_retrieve)
                 if (i < 10):
-                    if (len(tweets) == 20):
+                    if (len(tweets) == 25):
                         print(i)
                         i += 1
                         for tweet in tweets:
@@ -197,24 +195,23 @@ def add_to_db(tweets,friend_id,user):
 #---------------- Retrieve from db and randomization for A ---------------
 
 #retrive json for test A from db
-def retrieve_from_db(user,test):
+def retrieve_from_db(user):
     le_json=[]
-    if test == 1:
-        try:
-            current_user = UnUser.objects.get(user_name=user)
-            f_tweets=LesTweets2.objects.filter(user=current_user).all()
-            for tweets in f_tweets:
-                tweets_f=[]
-                j_tweets=eval(tweets.tweets)
-                for tweet in j_tweets:
-                    tweets_f.append(tweet)
-                le_json += randomization_1(tweets_f,current_user,tweets.friend_id)
-            random.shuffle(le_json)
-            return le_json
+    try:
+        current_user = UnUser.objects.get(user_name=user)
+        f_tweets=LesTweets2.objects.filter(user=current_user).all()
+        for tweets in f_tweets:
+            tweets_f=[]
+            j_tweets=eval(tweets.tweets)
+            for tweet in j_tweets:
+                tweets_f.append(tweet)
+            le_json += randomization_1(tweets_f,current_user,tweets.friend_id)
+        random.shuffle(le_json)
+        return le_json
 
-        except Exception as e:
-            print(str(e))
-            return False
+    except Exception as e:
+        print(str(e))
+        return False
 
 #get from tweet from 1 friend 5 tweets ranom and add id to db
 def randomization_1(tweets,user,friend_id):
@@ -244,15 +241,19 @@ def time_spent(la_serie):
         if decision.tweet_id == '1':
             timer=decision.created_at
         else:
-            if decision.text not in friends:
-                friends.append(decision.text)
+            if decision.friend_id not in friends:
+                friends.append(decision.friend_id)
 
             duration=decision.created_at-timer
             timer=decision.created_at
-            if decision.text in matrix:
-                matrix[decision.text]+=duration
+            try:
+                duration_normalized=(duration.total_seconds()/int(decision.txt_length))
+            except Exception as e:
+                print(str(e))
+            if decision.friend_id in matrix:
+                matrix[decision.friend_id]+=duration_normalized
             else:
-                matrix[decision.text] = duration
+                matrix[decision.friend_id] = duration_normalized
 
     return {'time_matrix': matrix,'friends':friends}
 
@@ -260,20 +261,17 @@ def time_spent(la_serie):
 def get_numbers_tweets(final_time_friends,total_time,user):
     ratios=[]
     les_tweets=[]
-    la_serie=[]
-    maximum=0
-    minimum=1000
+    vect=[]
+
     for time in final_time_friends:
-        ratio=(time['time'].total_seconds()/total_time.total_seconds())*100
-        if (ratio > maximum):
-            maximum = ratio
-        if(ratio < minimum):
-            minimum = ratio
+        ratio=(time['time']/total_time)*100
         ratios.append({'friend':time['friend'],'ratio':ratio})
 
+    for number in ratios:
+        vect.append(number['ratio'])
+
     for ratio in ratios:
-        la_serie = retrieve_from_db_2(ratio['friend'],user,math_formula(minimum,maximum,ratio['ratio']))
-        les_tweets += la_serie
+        les_tweets += retrieve_from_db_2(ratio['friend'],user,math_formula(min(vect),max(vect),ratio['ratio']))
     
     return les_tweets
 
@@ -287,13 +285,11 @@ def retrieve_from_db_2(friend_id,user,number):
             j_tweets.append(tweet)
 
     la_list=random.sample(j_tweets,int(number))
-
     return la_list
 
 #math formula which give the number of tweet to take
 def math_formula(mini,maxi,ratio):
-    dec, inte = math.modf(15*(ratio-(mini-1))/(maxi-(mini-1)))
-    print(inte)
+    inte = round(1+19*(ratio-mini)/(maxi-mini))
     return inte
 
 
@@ -301,57 +297,40 @@ def math_formula(mini,maxi,ratio):
 #--------------------- Retrieve from db and ranomization for B like  --------------
 
 #return matrix with time spent and list of friends
-def time_spent_l(la_serie):
+def number_like(la_serie):
     matrix={}
-    timer=0
     friends=[]
     for decision in la_serie:
-        if decision.tweet_id == '1':
-            timer=decision.created_at
-        else:
-            if decision.text not in friends:
-                friends.append(decision.text)
+        if decision.tweet_id != '1':
+            if decision.friend_id not in friends:
+                friends.append(decision.friend_id)
 
-            duration=decision.created_at-timer
-            timer=decision.created_at
             if decision.left:
-                if ('like',decision.text) in matrix:
-                    matrix[('like',decision.text)]+=duration
+                if ('like',decision.friend_id) in matrix:
+                    matrix[('like',decision.friend_id)]+=1
                 else:
-                    matrix[('like',decision.text)] = duration
+                    matrix[('like',decision.friend_id)] = 1
             if decision.right:
-                if ('dislike',decision.text) in matrix:
-                    matrix[('dislike',decision.text)]+=duration
+                if ('dislike',decision.friend_id) in matrix:
+                    matrix[('dislike',decision.friend_id)]+=1
                 else:
-                    matrix[('dislike',decision.text)] = duration
+                    matrix[('dislike',decision.friend_id)] = 1
 
-    return {'time_matrix': matrix,'friends':friends}
+    return {'number_matrix': matrix,'friends':friends}
 
 #compute the number of tweet per friends for test B
-def get_numbers_tweets_l(final_time_friends,total_time,user):
-    ratios=[]
+def get_numbers_tweets_l(final_number_friends,user):
     les_tweets=[]
     la_serie=[]
-    maximum=0
-    minimum=100
-    for time in final_time_friends:
-        if time['time'] != 0:
-            ratio=(time['time'].total_seconds()/total_time.total_seconds())*100
-            if (ratio > maximum):
-                maximum = ratio
-            if(ratio < minimum):
-                minimum = ratio
-            ratios.append({'friend':time['friend'],'ratio':ratio})
-        else:
-            minimum=0
-            ratios.append({'friend':time['friend'],'ratio':0})
+    vect=[]
 
-    for ratio in ratios:
-        if ratio['ratio'] == 0:
-            la_serie = retrieve_from_db_2(ratio['friend'],user,15)
-        else:
-            la_serie = retrieve_from_db_2(ratio['friend'],user,math_formula(minimum,maximum,ratio['ratio']))
+    for number in final_number_friends:
+        vect.append(number['number'])
+
+    for number in final_number_friends:
+        la_serie = retrieve_from_db_2(number['friend'],user,math_formula_l(min(vect),max(vect),number['number']))
         les_tweets += la_serie
+
     return les_tweets
 
 #retrive json for test B from db
@@ -369,39 +348,40 @@ def retrieve_from_db_2_l(friend_id,user,number):
 
 #math formula which give the number of tweet to take
 def math_formula_l(mini,maxi,ratio):
-    dec, inte = math.modf(15*(ratio-mini)/(maxi-mini))
+    inte=round(1+19*(ratio-mini)/(maxi-mini))
     return inte
-
 
 #----------------- POST results --------------------
 
 def statistics(request):
     current_user = UnUser.objects.get(user_name=request.user)
-    la_serie_1 = UneSerie3.objects.filter(user=current_user).order_by('created_at').all()[51:102]
+    la_serie_1 = UneSerie4.objects.filter(user=current_user).order_by('created_at').all()[51:102]
     les_stats_1=time_spent(la_serie_1)
 
     print('-----serie1------')
     matrix=les_stats_1['time_matrix']
-    total_time=datetime.timedelta(0, 0, 0, 0)
+    total_time=0
+
+    print(matrix)
 
     for friend in les_stats_1['friends']:
-        if ('dislike',friend) in matrix:
-            print(matrix[('dislike',friend)])
-            total_time += matrix[('dislike',friend)]
+        if friend in matrix:
+            print(matrix[friend])
+            total_time += matrix[friend]
         else:
             print(0)
     print(total_time)
     print('---serie2----')
-    la_serie_2 = UneSerie3.objects.filter(user=current_user).order_by('created_at').all()[:51]
+    la_serie_2 = UneSerie4.objects.filter(user=current_user).order_by('created_at').all()[:51]
     les_stats_2=time_spent(la_serie_2)
 
     matrix=les_stats_2['time_matrix']
-    total_time=datetime.timedelta(0, 0, 0, 0)
+    total_time=0
 
     for friend in les_stats_2['friends']:
-        if ('dislike',friend) in matrix:
-            print(matrix[('dislike',friend)])
-            total_time += matrix[('dislike',friend)]
+        if friend in matrix:
+            print(matrix[friend])
+            total_time += matrix[friend]
         else:
             print(0)
     print(total_time)
@@ -417,17 +397,18 @@ def survey(request):
 def mark(request):
     if request.method == 'POST':
         tweet_id = request.POST.get('tweet_id')
-        tweet_text = request.POST.get('tweet_text')
+        friend_id = request.POST.get('friend_id')
+        txt_length = request.POST.get('txt_length')
         
         if tweet_id:
             direction = request.POST.get('direction')
             current_user = UnUser.objects.get(user_name=request.user)
 
             if direction == 'left':
-                add_tweet = UneSerie3.objects.create(left=True,text=unicode(tweet_text),tweet_id=tweet_id,user=current_user)
+                add_tweet = UneSerie4.objects.create(left=True,txt_length=txt_length,friend_id=friend_id,tweet_id=tweet_id,user=current_user)
                 return HttpResponse('True')
             elif direction == 'right':
-                add_tweet = UneSerie3.objects.create(right=True,text=tweet_text,tweet_id=tweet_id,user=current_user)
+                add_tweet = UneSerie4.objects.create(right=True,txt_length=txt_length,friend_id=friend_id,tweet_id=tweet_id,user=current_user)
                 return HttpResponse('True')
             else:
                 print('error on direction')

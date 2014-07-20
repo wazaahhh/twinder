@@ -7,7 +7,7 @@
 		{% if user and not user.is_anonymous %}
 			<div class = "reveal">
 				<div class = "slides">
-					<section id="1">
+					<section id="1" name="0" value="0">
 						Ready!</br>
 						Press L to start.
 					</section>
@@ -48,24 +48,25 @@
 	 	for (i=0;i<tweets_f.length;i++){
 	 		var tweet_id=tweets_f[i].tweet_id;
 	 		var friend_id=tweets_f[i].friend_id;
-	 		streaming(tweet_id,friend_id);
+	 		var txt_length=tweets_f[i].tweet_txt;
+	 		streaming(tweet_id,friend_id,txt_length.length);
 	 	}
 	 }
 
 	//Stream tweets tks to ajax call
-	function streaming(id,friend){
+	function streaming(id,friend,txt_length){
 				$.ajax({
-				dataType: "jsonp",
-				url: "https://api.twitter.com/1/statuses/oembed.json?id="+id+'&align=center',
-				type: 'GET',
-					success: function(data) {
-						if (data.html){
-							$(".slides").append('<section id="'+id+'" value="'+friend+'">'+data.html+'</section>');
-						}
-					},
-				    error: function(XMLHttpRequest, textStatus, errorThrown) { 
-				        alert("Status: " + textStatus); alert("Error: " + errorThrown); 
-				    },    	
+					dataType: "jsonp",
+					url: "https://api.twitter.com/1/statuses/oembed.json?id="+id+'&align=center',
+					type: 'GET',
+						success: function(data,args) {
+							if (data.html){
+								$(".slides").append('<section id="'+id+'" value="'+friend+'" name="'+txt_length+'">'+data.html+'</section>');
+							}
+						},
+					    error: function(Xhr, textStatus, errorThrown) {
+					    	alert(Xhr);
+					    }, 	
 			});
 	}
 
