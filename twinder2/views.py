@@ -354,15 +354,19 @@ def math_formula_l(mini,maxi,ratio):
 #----------------- POST results --------------------
 
 def statistics(request):
-    current_user = UnUser.objects.get(user_name=request.user)
+    current_user = UnUser.objects.all().last()
     la_serie_1 = UneSerie4.objects.filter(user=current_user).order_by('created_at').all()[51:102]
     les_stats_1=time_spent(la_serie_1)
 
     print('-----serie1------')
     matrix=les_stats_1['time_matrix']
     total_time=0
+    sum_like=0
 
-    print(matrix)
+    for action in la_serie_1:
+        if action.left:
+            sum_like+=1
+
 
     for friend in les_stats_1['friends']:
         if friend in matrix:
@@ -371,12 +375,18 @@ def statistics(request):
         else:
             print(0)
     print(total_time)
+    print(sum_like)
     print('---serie2----')
     la_serie_2 = UneSerie4.objects.filter(user=current_user).order_by('created_at').all()[:51]
     les_stats_2=time_spent(la_serie_2)
 
     matrix=les_stats_2['time_matrix']
     total_time=0
+    sum_like=0
+
+    for action in la_serie_2:
+        if action.left:
+            sum_like+=1
 
     for friend in les_stats_2['friends']:
         if friend in matrix:
@@ -385,6 +395,7 @@ def statistics(request):
         else:
             print(0)
     print(total_time)
+    print(sum_like)
     return HttpResponse('yolo')
 
 #-------------- AJAX Call front-end -----------------
