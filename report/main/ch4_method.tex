@@ -1,113 +1,44 @@
-\chapter{Method}
-In this chapter we will see some examples of tables and figures.
+\chapter{Methodology}
+In this section, we describe our methodology for estimating behaviours of users in social media sites from observational data. Thanks to the literature we reviewed, we noticed that the interest and engagement are two crucial metrics for social media. These two values are dependant on many parameters which are not easy to determine. The user and the platform (Facebook, Twitter...) are the two main sources of variation. From the user perspective, their mood, stress and age are factors modifying the two metrics. From the service side, the factors are well known from the companies, many engineers are focusing on developing better solutions for the user. These solutions are taking into consideration the content, the display, meta-data and are today more accurate thanks to Big Data (Facebook 100000 weight).\\
+Due to three main reasons mentioned in the previous chapter which are privacy,content and technique, we based our experiment on Twitter. In this way, the content is normalised and the user is used to it because we embed the tweet: the design of each tweet is similar to the one on Twitter. In order to add fun, we picked the Tinder concept of binary classifications of girls and applied it to the tweets. This approach helped us to design a protocol based on tweets classification which differentiates the user interest and engagement.
+Firstly, we give an overview of the methodology, explaining the test that we ran and the metrics used. Secondly, we introduce our Twitter dataset, composed of embedded tweets from user timelines. Final, we delve into the process itself.
 
-\section{Tables}
-Let's see how to make a well designed table.
+\section{Big picture}
 
-\begin{table}[tb]
-\caption[A floating table]{A floating table.}
-\label{tab:esempio}
-\centering
-\begin{tabular}{ccc}
-\toprule
-name & weight & food \\ 
-\midrule
-mouse	& 10 g	& cheese \\
-cat	& 1 kg	& mice \\
-dog	& 10 kg	& cats \\
-t-rex	& 10 Mg	& dogs \\
-\bottomrule 
-\end{tabular}
-\end{table}
+Diagram
 
-The table~\ref{tab:esempio} is a floating table and was obtained with the following code:
-\begin{lstlisting}
-\begin{table}[tb]
-\caption[A floating table]{A floating table.}
-\label{tab:example}
-\centering
-\begin{tabular}{ccc}
-\toprule
-	name 	& weight & food	  \\ 
-\midrule
-	mouse	& 10  g	 & cheese \\
-	cat		&  1 kg	 & mice	  \\
-	dog		& 10 kg	 & cats   \\
-	t-rex	& 10 Mg	 & dogs	  \\
-\bottomrule 
-\end{tabular}
-\end{table}
-\end{lstlisting}
+In order to measure our users behaviours, we decided to run A/B testing with two different B tests. It allows us 
+to compare our dependent variables which are the number of likes and the time spent on a tweet. To be sure 
+that we only keep in consideration the two dependent variables, a simple graphical design is used. This 
+design is exactly like a PowerPoint document, where the content of each slide is an embedded tweet. The 
+user has to decide for each slide, if he likes or dislikes a tweet by pressing one of two different keys on the 
+keyboard. Based on this design, we create an A/B test with one initial experiment called "Calibration" (test A) 
+and two other ones taking in input the time (test B1) and the numbers of likes (test B2). Because of the unique 
+design, we are going to explain how we select the tweets for the calibration part and the two other tests. \\
+\\
+metrics: the time that a user is spending on a tweet, the decision (like / dislike) 
 
-\lipsum[1-2]
+\section{Experiment}
+
+\subsection{Dataset}
+
+As mentioned before, we decided to do a binary classification (like / dislike) of the tweets coming from the 
+user's timeline. Because we use tweets from the timeline, it is assumed that users are interested by the 
+content to a certain extent: they follow the writer of the tweet. In order to reduce external factors, we limit the 
+timeline at a group of 10 people who the person follows, called "friends". We select 10 friends randomly who 
+published at least 25 tweets. Thanks to this data, we create a simple timeline that we suppose is similar to the 
+real one. When a user logs in to Twinder, we retrieve in total 250 tweets: 25 tweets coming from 10 different 
+friends. In order to keep the timeline chronological, we select the most recent 25 tweets from each user. \\
+In the motivation chapter, we said in the Figure 1.3 that the content of twitter is standardised with a maximum of 140 characters. However, the content can take several forms, like photos, videos, text and it starts to become a little tricky to differentiate each case. We finally consider them similar to a pure text because the majority of the tweets with images contain text. After having considered the content of the tweets, the next problem that we faced was the layout of each tweet. Indeed, after displaying only the text of the tweets, we realised that the embed layout was something important for the user. It allow him to contextualise the information and link it to twitter. (img difference of embed not). \\
+The methodology of the experiment is based on the dataset assumption that we enumerated previously. The 
+A/B test will be explained, it is composed of the test A (calibration) and the test B1 or B2.  
+
+\subsection{A/B Test}
+
+\subsubsection{A Test}
 
 
-\section{Figures}
-Let's see now how to put one or several images in your text.
 
 
-\begin{figure}[tb] 
-\centering 
-\includegraphics[width=0.5\columnwidth]{galleria_stampe} 
-\caption[A floating figure]{A floating figure (the lithograph \emph{Galleria di stampe}, of M.~Escher, got from \url{http://www.mcescher.com/}).}
-\label{fig:galleria} 
-\end{figure}
-
-\begin{figure}[tb] 
-\centering 
-\includegraphics{some_vector_graphics.pdf} 
-\caption[A floating figure]{A floating figure with text typeset in "Utopia Latex", a font provided in the template-folder for typesetting figures with greek characters. The text has been "outlined" for best compatibility with the repro during the printing.}
-\label{fig:vector_graphics} 
-\end{figure}
 
 
-The figure~\ref{fig:galleria} is a floating figure and was obtained with the following code:
-\begin{lstlisting}
-\begin{figure}[tb] 
-\centering 
-\includegraphics[width=0.5\columnwidth]{galleria_stampe} 
-\caption[A floating figure]{A floating figure ... }
-\label{fig:galleria} 
-\end{figure}
-\end{lstlisting}
-
-
-\lipsum[1-2]
-
-\begin{figure}[tb]
-\centering
-
-\subfloat[Asia personas duo.]
-{\includegraphics[width=.45\columnwidth]{lorem}} \quad
-\subfloat[Pan ma signo.]
-{\label{fig:ipsum}%
-\includegraphics[width=.45\columnwidth]{ipsum}} \\
-\subfloat[Methodicamente o uno.]
-{\includegraphics[width=.45\columnwidth]{dolor}} \quad
-\subfloat[Titulo debitas.]
-{\includegraphics[width=.45\columnwidth]{sit}}
-\caption[Tu duo titulo debitas latente]{Tu duo titulo debitas
-latente.}
-\label{fig:esempio}
-\end{figure}
-
-The figure~\ref{fig:esempio} is a floating figure and was obtained with the following code:
-\begin{lstlisting}
-\begin{figure}[tb]
-\centering
-\subfloat[Asia personas duo.]
-{\includegraphics[width=.45\columnwidth]{lorem}} \quad
-\subfloat[Pan ma signo.]
-{\label{fig:ipsum}%
-\includegraphics[width=.45\columnwidth]{ipsum}} \\
-\subfloat[Methodicamente o uno.]
-{\includegraphics[width=.45\columnwidth]{dolor}} \quad
-\subfloat[Titulo debitas.]
-{\includegraphics[width=.45\columnwidth]{sit}}
-\caption[Tu duo titulo debitas latente]{Tu duo titulo debitas latente.}
-\label{fig:esempio}
-\end{figure}
-\end{lstlisting}
-
-
-\lipsum[3-8]

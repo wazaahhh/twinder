@@ -1,113 +1,61 @@
-\chapter{Motivations}
-In this chapter we will see some examples of tables and figures.
+\chapter{Motivations \& Evolution}
+To do
+\section{Motivations}
 
-\section{Tables}
-Let's see how to make a well designed table.
-
-\begin{table}[tb]
-\caption[A floating table]{A floating table.}
-\label{tab:esempio}
-\centering
-\begin{tabular}{ccc}
-\toprule
-name & weight & food \\ 
-\midrule
-mouse	& 10 g	& cheese \\
-cat	& 1 kg	& mice \\
-dog	& 10 kg	& cats \\
-t-rex	& 10 Mg	& dogs \\
-\bottomrule 
-\end{tabular}
-\end{table}
-
-The table~\ref{tab:esempio} is a floating table and was obtained with the following code:
-\begin{lstlisting}
-\begin{table}[tb]
-\caption[A floating table]{A floating table.}
-\label{tab:example}
-\centering
-\begin{tabular}{ccc}
-\toprule
-	name 	& weight & food	  \\ 
-\midrule
-	mouse	& 10  g	 & cheese \\
-	cat		&  1 kg	 & mice	  \\
-	dog		& 10 kg	 & cats   \\
-	t-rex	& 10 Mg	 & dogs	  \\
-\bottomrule 
-\end{tabular}
-\end{table}
-\end{lstlisting}
-
-\lipsum[1-2]
-
-
-\section{Figures}
-Let's see now how to put one or several images in your text.
-
+Social media has an important role in the real world and has an impact which was probably under
+estimated a couple of years ago. Historical events like the arab spring or the election in Cambodia are two 
+examples which show social media can be a powerful force for change when compared to other media. 
+These events lead to studies about human behaviour and engagement on these platforms.\\
+For users, one of the main goal is to increase the time efficiency on social media. Today, 27\% of an hour 
+spent online is on social media. There are many methods used to try to make users' time on social media
+more efficient.  As we saw with EdgeRank, the filtering of the information is one of the main ones. 
 
 \begin{figure}[tb] 
 \centering 
-\includegraphics[width=0.5\columnwidth]{galleria_stampe} 
-\caption[A floating figure]{A floating figure (the lithograph \emph{Galleria di stampe}, of M.~Escher, got from \url{http://www.mcescher.com/}).}
-\label{fig:galleria} 
+\includegraphics[width=0.5\columnwidth]{motiv/clock-time} 
+\caption[A floating figure]{The clock shows the repartition of the web TO DO  \emph{Galleria di stampe}, of M.~Escher, got from \url{http://www.mcescher.com/}).}
+\label{fig:clock} 
 \end{figure}
+
+Recently, Twitter had to deal with an engagement problem. As we can see on figure 1.2, despite is 550
+million users, Twitter has an engagement lower than Facebook or Instagram: this weakness led to  a drop in
+its stock price. However, "engagement" has no scientific definition and by consequence, there is no unique
+solution to this problem. By considering a new design which reduce the overload of information, it will be
+possible to analyse more details relating to the problem of engagement. By doing this it will be possible to
+improve user time efficiency and twitter engagement issues.
 
 \begin{figure}[tb] 
 \centering 
-\includegraphics{some_vector_graphics.pdf} 
-\caption[A floating figure]{A floating figure with text typeset in "Utopia Latex", a font provided in the template-folder for typesetting figures with greek characters. The text has been "outlined" for best compatibility with the repro during the printing.}
-\label{fig:vector_graphics} 
+\includegraphics[width=0.5\columnwidth]{motiv/social-engag} 
+\caption[A floating figure]{Social Engagement TO DO  \emph{Galleria di stampe}, of M.~Escher, got from \url{http://www.mcescher.com/}).}
+\label{fig:engagement} 
 \end{figure}
 
+\section{Project evolution}
 
-The figure~\ref{fig:galleria} is a floating figure and was obtained with the following code:
-\begin{lstlisting}
+Information overload is a large topic and many aspects could have been approached. By viewing Figure 1.3 can understand better why it was decide to focus the research on Twitter. Our three main criteria are: privacy, 
+content and technique. \\
+Firstly, with Gmail, privacy and content were being dealt with. Due to the email variate and the personal 
+characters of email, it was difficult to establish a protocol in order to improve the filtering of the emails.
+Secondly, we started to develop, with a similar design, applications based on different social media like 
+Reddit or Tumblr.\\
+Finally, Tinder and Twitter were found to be of particular interest, due to the design of the Tinder app and the 
+140 character limit of Twitter. For these two reasons and Twitter's simple API The idea of Twinder was arrived 
+upon.\\
+You can find in annex the diagram showing the evolution of the project through 3 aspects: technique, apps 
+implementation and research.
+
 \begin{figure}[tb] 
 \centering 
-\includegraphics[width=0.5\columnwidth]{galleria_stampe} 
-\caption[A floating figure]{A floating figure ... }
-\label{fig:galleria} 
-\end{figure}
-\end{lstlisting}
-
-
-\lipsum[1-2]
-
-\begin{figure}[tb]
-\centering
-
-\subfloat[Asia personas duo.]
-{\includegraphics[width=.45\columnwidth]{lorem}} \quad
-\subfloat[Pan ma signo.]
-{\label{fig:ipsum}%
-\includegraphics[width=.45\columnwidth]{ipsum}} \\
-\subfloat[Methodicamente o uno.]
-{\includegraphics[width=.45\columnwidth]{dolor}} \quad
-\subfloat[Titulo debitas.]
-{\includegraphics[width=.45\columnwidth]{sit}}
-\caption[Tu duo titulo debitas latente]{Tu duo titulo debitas
-latente.}
-\label{fig:esempio}
+\includegraphics[width=0.5\columnwidth]{motiv/table_analysis} 
+\caption[A floating figure]{Lalala TO DO  \emph{Galleria di stampe}, of M.~Escher, got from \url{http://www.mcescher.com/}).}
+\label{fig:table_analysis} 
 \end{figure}
 
-The figure~\ref{fig:esempio} is a floating figure and was obtained with the following code:
-\begin{lstlisting}
-\begin{figure}[tb]
-\centering
-\subfloat[Asia personas duo.]
-{\includegraphics[width=.45\columnwidth]{lorem}} \quad
-\subfloat[Pan ma signo.]
-{\label{fig:ipsum}%
-\includegraphics[width=.45\columnwidth]{ipsum}} \\
-\subfloat[Methodicamente o uno.]
-{\includegraphics[width=.45\columnwidth]{dolor}} \quad
-\subfloat[Titulo debitas.]
-{\includegraphics[width=.45\columnwidth]{sit}}
-\caption[Tu duo titulo debitas latente]{Tu duo titulo debitas latente.}
-\label{fig:esempio}
-\end{figure}
-\end{lstlisting}
+ *:content is not constant
+**: 140 char with image or not
+
+x: problem for implementing the experiment
+v: ok for implementing the experiment
 
 
-\lipsum[3-8]
