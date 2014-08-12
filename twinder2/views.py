@@ -243,11 +243,13 @@ def time_spent(la_serie):
         else:
             if decision.friend_id not in friends:
                 friends.append(decision.friend_id)
+            #print(decision.left)
 
             duration=decision.created_at-timer
             timer=decision.created_at
             try:
                 duration_normalized=(duration.total_seconds()/int(decision.txt_length))
+                print(duration_normalized)
             except Exception as e:
                 print(str(e))
             if decision.friend_id in matrix:
@@ -354,14 +356,26 @@ def math_formula_l(mini,maxi,ratio):
 #----------------- POST results --------------------
 
 def statistics(request):
-    current_user = UnUser.objects.all().last()
-    la_serie_1 = UneSerie4.objects.filter(user=current_user).order_by('created_at').all()[51:102]
-    les_stats_1=time_spent(la_serie_1)
+    current_user = UnUser.objects.all()
+    current_user = current_user[20]
 
-    print('-----serie1------')
-    matrix=les_stats_1['time_matrix']
+
+    if current_user.user_name != 'joshuaready':
+        print(current_user.user_name)
+        print('---serie1---')
+        la_serie_1 = UneSerie4.objects.filter(user=current_user).order_by('created_at').all()[:51]
+        les_stats_1=time_spent(la_serie_1)
+
+        print('---serie2---')
+        la_serie_2 = UneSerie4.objects.filter(user=current_user).order_by('created_at').all()[51:102]
+        les_stats_2=time_spent(la_serie_2)
+
+    
+    '''print('-----serie1------')
+    matrix_t=les_stats_1['time_matrix']
     total_time=0
     sum_like=0
+
 
     for action in la_serie_1:
         if action.left:
@@ -369,15 +383,17 @@ def statistics(request):
 
 
     for friend in les_stats_1['friends']:
-        if friend in matrix:
-            print(matrix[friend])
-            total_time += matrix[friend]
+        if friend in matrix_t:
+            #print(matrix_t[friend])
+            total_time += matrix_t[friend]
         else:
             print(0)
+
+    print(current_user.user_name)
     print(total_time)
-    print(sum_like)
+    #print(sum_like)
     print('---serie2----')
-    la_serie_2 = UneSerie4.objects.filter(user=current_user).order_by('created_at').all()[:51]
+    la_serie_2 = UneSerie4.objects.filter(user=current_user).order_by('created_at').all()[51:102]
     les_stats_2=time_spent(la_serie_2)
 
     matrix=les_stats_2['time_matrix']
@@ -390,12 +406,12 @@ def statistics(request):
 
     for friend in les_stats_2['friends']:
         if friend in matrix:
-            print(matrix[friend])
+            #print(matrix[friend])
             total_time += matrix[friend]
         else:
             print(0)
     print(total_time)
-    print(sum_like)
+    #print(sum_like)'''
     return HttpResponse('yolo')
 
 #-------------- AJAX Call front-end -----------------

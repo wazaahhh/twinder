@@ -3,27 +3,27 @@
 \BOOKMARK [0][-]{section*.4}{List of figures}{}% 3
 \BOOKMARK [0][-]{section*.6}{List of tables}{}% 4
 \BOOKMARK [0][-]{chapter*.8}{Introduction}{}% 5
-\BOOKMARK [0][-]{chapter*.9}{Background}{}% 6
-\BOOKMARK [0][-]{chapter.1}{Motivations \046 Evolution}{}% 7
-\BOOKMARK [1][-]{section.1.1}{Motivations}{chapter.1}% 8
-\BOOKMARK [1][-]{section.1.2}{Project evolution}{chapter.1}% 9
-\BOOKMARK [0][-]{chapter.2}{Methodology}{}% 10
-\BOOKMARK [1][-]{section.2.1}{Big picture}{chapter.2}% 11
-\BOOKMARK [1][-]{section.2.2}{Experiment}{chapter.2}% 12
-\BOOKMARK [2][-]{subsection.2.2.1}{Dataset}{section.2.2}% 13
-\BOOKMARK [2][-]{subsection.2.2.2}{A/B Test}{section.2.2}% 14
-\BOOKMARK [0][-]{chapter.3}{Technical Implementation}{}% 15
-\BOOKMARK [1][-]{section.3.1}{Tables}{chapter.3}% 16
-\BOOKMARK [1][-]{section.3.2}{Figures}{chapter.3}% 17
-\BOOKMARK [0][-]{chapter.4}{Data acquisition}{}% 18
-\BOOKMARK [1][-]{section.4.1}{Tables}{chapter.4}% 19
-\BOOKMARK [1][-]{section.4.2}{Figures}{chapter.4}% 20
-\BOOKMARK [0][-]{chapter.5}{Results}{}% 21
-\BOOKMARK [1][-]{section.5.1}{Tables}{chapter.5}% 22
-\BOOKMARK [1][-]{section.5.2}{Figures}{chapter.5}% 23
-\BOOKMARK [0][-]{chapter.6}{Discussion}{}% 24
-\BOOKMARK [1][-]{section.6.1}{Tables}{chapter.6}% 25
-\BOOKMARK [1][-]{section.6.2}{Figures}{chapter.6}% 26
-\BOOKMARK [0][-]{appendix.A}{An appendix}{}% 27
-\BOOKMARK [0][-]{section*.29}{Bibliography}{}% 28
-\BOOKMARK [0][-]{section*.30}{Curriculum Vitae}{}% 29
+\BOOKMARK [0][-]{chapter*.9}{Related works}{}% 6
+\BOOKMARK [1][-]{section.0.1}{EdgeRank}{chapter*.9}% 7
+\BOOKMARK [1][-]{section.0.2}{Twitter engagement}{chapter*.9}% 8
+\BOOKMARK [1][-]{section.0.3}{Twitter redesign}{chapter*.9}% 9
+\BOOKMARK [0][-]{chapter.1}{Motivations \046 Evolution}{}% 10
+\BOOKMARK [1][-]{section.1.1}{Motivations}{chapter.1}% 11
+\BOOKMARK [1][-]{section.1.2}{Project evolution}{chapter.1}% 12
+\BOOKMARK [0][-]{chapter.2}{Methodology}{}% 13
+\BOOKMARK [1][-]{section.2.1}{Big picture}{chapter.2}% 14
+\BOOKMARK [1][-]{section.2.2}{Experiment}{chapter.2}% 15
+\BOOKMARK [2][-]{subsection.2.2.1}{Dataset}{section.2.2}% 16
+\BOOKMARK [2][-]{subsection.2.2.2}{A/B Test}{section.2.2}% 17
+\BOOKMARK [0][-]{chapter.3}{Technical Implementation}{}% 18
+\BOOKMARK [1][-]{section.3.1}{Tables}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.2}{Figures}{chapter.3}% 20
+\BOOKMARK [0][-]{chapter.4}{Data acquisition}{}% 21
+\BOOKMARK [1][-]{section.4.1}{Tables}{chapter.4}% 22
+\BOOKMARK [1][-]{section.4.2}{Figures}{chapter.4}% 23
+\BOOKMARK [0][-]{chapter.5}{Results}{}% 24
+\BOOKMARK [1][-]{section.5.1}{Tables}{chapter.5}% 25
+\BOOKMARK [1][-]{section.5.2}{Figures}{chapter.5}% 26
+\BOOKMARK [0][-]{chapter.6}{Discussion}{}% 27
+\BOOKMARK [1][-]{section.6.1}{Tables}{chapter.6}% 28
+\BOOKMARK [1][-]{section.6.2}{Figures}{chapter.6}% 29
