@@ -23,19 +23,82 @@
 \contentsline {chapter}{\numberline {2}Methodology}{11}{chapter.2}
 \contentsline {paragraph}{}{11}{chapter.2}
 \contentsline {section}{\numberline {2.1}Big picture}{11}{section.2.1}
-\contentsline {section}{\numberline {2.2}Experiment}{12}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Dataset}{12}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}A/B Test}{12}{subsection.2.2.2}
-\contentsline {subsubsection}{A Test}{12}{subsection.2.2.2}
-\contentsline {chapter}{\numberline {3}Technical Implementation}{15}{chapter.3}
-\contentsline {section}{\numberline {3.1}Tables}{15}{section.3.1}
-\contentsline {section}{\numberline {3.2}Figures}{18}{section.3.2}
-\contentsline {chapter}{\numberline {4}Data acquisition}{23}{chapter.4}
-\contentsline {section}{\numberline {4.1}Tables}{23}{section.4.1}
-\contentsline {section}{\numberline {4.2}Figures}{24}{section.4.2}
+\contentsline {paragraph}{}{11}{section.2.1}
+\contentsline {section}{\numberline {2.2}Dataset}{12}{section.2.2}
+\contentsline {paragraph}{}{12}{section.2.2}
+\contentsline {section}{\numberline {2.3}A/B Test}{12}{section.2.3}
+\contentsline {paragraph}{}{12}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Test A : the calibration }{12}{subsection.2.3.1}
+\contentsline {paragraph}{}{12}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Tests B}{13}{subsection.2.3.2}
+\contentsline {paragraph}{}{13}{subsection.2.3.2}
+\contentsline {subsubsection}{\numberline {2.3.2.1}Test-time-B}{13}{subsubsection.2.3.2.1}
+\contentsline {paragraph}{}{13}{subsubsection.2.3.2.1}
+\contentsline {subsubsection}{\numberline {2.3.2.2}Test-Like-B}{14}{subsubsection.2.3.2.2}
+\contentsline {paragraph}{}{14}{subsubsection.2.3.2.2}
+\contentsline {chapter}{\numberline {3}Experimental settings}{17}{chapter.3}
+\contentsline {paragraph}{}{17}{chapter.3}
+\contentsline {section}{\numberline {3.1}The design}{17}{section.3.1}
+\contentsline {paragraph}{}{17}{section.3.1}
+\contentsline {section}{\numberline {3.2}Data acquisition}{18}{section.3.2}
+\contentsline {chapter}{\numberline {4}Technical Implementation}{21}{chapter.4}
+\contentsline {paragraph}{}{21}{chapter.4}
+\contentsline {section}{\numberline {4.1}Languages}{21}{section.4.1}
+\contentsline {paragraph}{}{21}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Back-end}{21}{subsection.4.1.1}
+\contentsline {paragraph}{}{21}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Front-end}{22}{subsection.4.1.2}
+\contentsline {paragraph}{}{22}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Frameworks}{22}{subsection.4.1.3}
+\contentsline {paragraph}{}{22}{subsection.4.1.3}
+\contentsline {section}{\numberline {4.2}Structure}{23}{section.4.2}
+\contentsline {paragraph}{}{23}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}General structure}{23}{subsection.4.2.1}
+\contentsline {paragraph}{}{23}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Important files}{24}{subsection.4.2.2}
+\contentsline {paragraph}{}{24}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Database}{24}{subsection.4.2.3}
+\contentsline {paragraph}{}{24}{subsection.4.2.3}
+\contentsline {section}{\numberline {4.3}Parts of the code that is interesting}{25}{section.4.3}
+\contentsline {paragraph}{}{25}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Authentication}{25}{subsection.4.3.1}
+\contentsline {paragraph}{}{25}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Keyboard \& AJAX call}{25}{subsection.4.3.2}
+\contentsline {paragraph}{}{25}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Index.html}{26}{subsection.4.3.3}
+\contentsline {paragraph}{}{26}{lstnumber.-1.6}
+\contentsline {section}{\numberline {4.4}API}{26}{section.4.4}
+\contentsline {paragraph}{}{26}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Wrapper}{27}{subsection.4.4.1}
+\contentsline {paragraph}{}{27}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Request limit}{27}{subsection.4.4.2}
+\contentsline {paragraph}{}{27}{subsection.4.4.2}
+\contentsline {section}{\numberline {4.5}Deployment}{28}{section.4.5}
+\contentsline {paragraph}{}{28}{section.4.5}
 \contentsline {chapter}{\numberline {5}Results}{29}{chapter.5}
-\contentsline {section}{\numberline {5.1}Tables}{29}{section.5.1}
-\contentsline {section}{\numberline {5.2}Figures}{30}{section.5.2}
-\contentsline {chapter}{\numberline {6}Discussion}{35}{chapter.6}
-\contentsline {section}{\numberline {6.1}Tables}{35}{section.6.1}
-\contentsline {section}{\numberline {6.2}Figures}{36}{section.6.2}
+\contentsline {paragraph}{}{29}{chapter.5}
+\contentsline {section}{\numberline {5.1}Explanations}{29}{section.5.1}
+\contentsline {paragraph}{}{29}{section.5.1}
+\contentsline {section}{\numberline {5.2}Data}{29}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Figure 1}{29}{subsection.5.2.1}
+\contentsline {paragraph}{}{29}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Figure 2}{30}{subsection.5.2.2}
+\contentsline {paragraph}{}{30}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Figure 3}{30}{subsection.5.2.3}
+\contentsline {paragraph}{}{30}{subsection.5.2.3}
+\contentsline {subsection}{\numberline {5.2.4}Figure 4}{31}{subsection.5.2.4}
+\contentsline {paragraph}{}{31}{subsection.5.2.4}
+\contentsline {subsection}{\numberline {5.2.5}Figure 5}{32}{subsection.5.2.5}
+\contentsline {paragraph}{}{32}{subsection.5.2.5}
+\contentsline {subsection}{\numberline {5.2.6}Figure 6}{32}{subsection.5.2.6}
+\contentsline {paragraph}{}{32}{subsection.5.2.6}
+\contentsline {section}{\numberline {5.3}Survey}{33}{section.5.3}
+\contentsline {paragraph}{}{33}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}General questions}{33}{subsection.5.3.1}
+\contentsline {paragraph}{}{33}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Variation between test A and test B}{34}{subsection.5.3.2}
+\contentsline {chapter}{\numberline {6}Discussion}{37}{chapter.6}
+\contentsline {paragraph}{}{37}{chapter.6}
+\contentsline {paragraph}{}{37}{chapter.6}
+\contentsline {paragraph}{}{38}{chapter.6}
+\contentsline {paragraph}{}{38}{chapter.6}
