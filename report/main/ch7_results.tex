@@ -8,9 +8,9 @@ In the previous chapter, we delved deeply into the technical implementation of t
 \paragraph{}
 As we explain in chapter 3 (method), in order to measure the level of interest and the time of engagement, we created an application, which allows us to do two A/B tests. These two A/B tests, respectively test-time and test-like, are composed by two series each. We have named them test-time-A, test-time-B and test-like-A, test-like-B. To clarify, test-time-A and test-like-A are the calibration tests and that share many similarities. We will present the results acquired by the application, which are based on the number of tweets liked in a series, and the time spend on tweets. The time spent on a tweet is normalized by the number of characters of this tweet. All of the data acquired during the experiment are available on Github \cite{tw_github}.
 
-\section{Data}
+\section{Twinder results}
 
-\subsection{Figure 1}
+\subsection{More likes and more time}
 
 \paragraph{}
 Table \ref{tab:mo_money} gives us two sets of data. Column 1 shows the percentage of people who took more time to do test B than test A. The second column, column 2, shows the percentage of people who liked more tweets in the test B than the test A.\\
@@ -30,7 +30,7 @@ test-time-B & 37.5\% & 25.0\% \\
 \label{tab:mo_money}
 \end{table}
 
-\subsection{Figure 2}
+\subsection{Time and Like rate}
 
 \paragraph{}
 The table \ref{tab:mo_problem} gives us the time and 'like' rates that were computed with this formula:
@@ -58,7 +58,7 @@ test-time-B & -2.51\% & -9.14\% \\
 \label{tab:mo_problem}
 \end{table}
 
-\subsection{Figure 3}
+\subsection{Time spent on the 100 tweets}
 
 \paragraph{}
 The blue dotted curve in Figure \ref{fig:time_both} represents the average time spent by all the 15 users on each tweets. The normalized time of the tests A (respectively test-like-A and test-like-A) are given by the value between 1 and 50. From 51 until the end, we have the normalized time spent on tweets of the tests B.
@@ -81,10 +81,10 @@ In general, the signal is pretty random with a slight decreasing tendency at the
 \end{figure}
 
 
-\subsection{Figure 4}
+\subsection{Time spent on tests B}
 
 \paragraph{}
-Figure \ref{fig:mob_b_t_l} represents as previously, the moving average of the average time spent on tweets in test-like-B (red curve) and tweets in test-time-B (blue curve). We observe that people spend more time in test-time-B than test-like-B. Moreover, after analyzing the data, we can see that the increase of the red curve close to tweet 39 is due to a value 20 [source] time superior at the average of the other value.
+Figure \ref{fig:mob_b_t_l} represents as previously, the moving average of the average time spent on tweets in test-like-B (red curve) and tweets in test-time-B (blue curve). We observe that people spend more time in test-time-B than test-like-B. Moreover, after analyzing the data, we can see that the increase of the red curve close to tweet 39 is due to a value 20 time superior at the average of the other value.
 Moreover, we can see that the blue signal is more random than the red one. Indeed, in series test-like-B, the variation of the signal is equal to 0.4 compare to the 0.9 for the other curve.\\
 The decision time is more constant in test-like-B, we can conclude that the decisions are more mechanical than on test-time-B. So,  people are less involve in test-like-B and their engagement time is less important. At the opposite, test-time-B has important variations between tweets decision time, it shows that the engagement is not the same for each tweets but it is in general higher than test-like-B.
 
@@ -96,7 +96,7 @@ The decision time is more constant in test-like-B, we can conclude that the deci
 \end{figure}
 
 
-\subsection{Figure 5}
+\subsection{Number of likes on 100 tweets}
 
 \paragraph{}
 Figure \ref{fig:like_both}, show the moving average of the average of likes that receives tweets during an experience. As previously, tweets 1 to 50 are the test A and tweets 51 to 100 are test-like-B and test-time-B all together. We can see that the number of likes is almost random during the test. We notice a pick of likes at the beginning of the test B which results from test-like-B and is augmentation of tweets like of 18.52\% \ref{tab:mo_problem}. We can conclude that people are classifying tweets until the end of both test. We could have imagine people pressing only L (like) or D (dislike) in order to finish faster. \\ \\
@@ -108,10 +108,10 @@ Figure \ref{fig:like_both}, show the moving average of the average of likes that
 \label{fig:like_both} 
 \end{figure}
 
-\subsection{Figure 6}
+\subsection{Number of likes in tests B}
 
 \paragraph{}
-Figure \ref{fig:mob_b_t_l_2}, gives us the same information that Figure \ref{fig:mob_b_t_l}but this time we measure the average of likes and not the time. The curve red shows us the moving average of the normalized number of likes in the test-like-B. Respectively, the curve bleu represents the same information in the test-time-B. We notice that when we select tweets based on the number of likes in test A, we have a higher results than based on the time spent on tweets. This graphic illustres the results of the table [source] which reveal a positive rateLike (18.52\%) for test-like-B and negative (-9.14\% ) for test-time-B. \\\\\\\\\\\\\\\\
+Figure \ref{fig:mob_b_t_l_2}, gives us the same information that Figure \ref{fig:mob_b_t_l}but this time we measure the average of likes and not the time. The curve red shows us the moving average of the normalized number of likes in the test-like-B. Respectively, the curve bleu represents the same information in the test-time-B. We notice that when we select tweets based on the number of likes in test A, we have a higher results than based on the time spent on tweets. This graphic illustres the results of the table \ref{tab:mo_problem} which reveal a positive rateLike (18.52\%) for test-like-B and negative (-9.14\% ) for test-time-B. \\\\\\\\\\\\\\\\
 
 \begin{figure}[h] 
 \centering 
@@ -140,7 +140,7 @@ In order to have a better understanding of the results of the experiment, it is 
 In conclusion, our average candidate is a daily twitter user who find the content of his timeline enough interesting to look at it every day. However, his engagement is something unclear and the user spend probably more time on Facebook than Twitter. We will now analyse the results between the test A and test B.
 
 
-\subsection{Variation between test A and test B}
+\subsection{Variation between test A and B}
 
 \paragraph{}
 The table \ref{tab:surv_var}  below gives us the variation of engagement, interest and tiredness between test-like-B and test-like-A respectively test-time-B and test-time-A. We see that variation of the interest is in agreement with the previous results \ref{fig:mob_b_t_l_2}. Indeed, the interest decreases of 3.8\% in test-time-B and increase of 26\% in test-like-B. The engagement is almost two time higher in test-like-B and we can put in parallel this engagement and the tiredness of the user after the test-like-B. Then, users are more engagement but the price is significatively high, 38\% more tired. As for test-time-B, the engagement increases of 10\% and candidates are 8.7\% less tired than in test-time-A.
@@ -155,7 +155,7 @@ test-like-B & 20.00\% & 26.32\% & -37.50\% \\
 test-time-B & 8.33\% & -3.85\% & -8.70\%\\
 \bottomrule 
 \end{tabular}
-\caption[Survey - variation]{This table shows the variation of three parameters: engagement, interest and tiredness between test A and tests B. These values are coming from the survey  [source]. }
+\caption[Survey - variation]{This table shows the variation of three parameters: engagement, interest and tiredness between test A and tests B. These values are coming from the survey \cite{Survey_g}. }
 \label{tab:surv_var}
 \end{table}
 

@@ -80,24 +80,24 @@
 \contentsline {paragraph}{}{31}{chapter.5}
 \contentsline {section}{\numberline {5.1}Explanations}{31}{section.5.1}
 \contentsline {paragraph}{}{31}{section.5.1}
-\contentsline {section}{\numberline {5.2}Data}{31}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Figure 1}{31}{subsection.5.2.1}
+\contentsline {section}{\numberline {5.2}Twinder results}{31}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}More likes and more time}{31}{subsection.5.2.1}
 \contentsline {paragraph}{}{31}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Figure 2}{32}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.2}Time and Like rate}{32}{subsection.5.2.2}
 \contentsline {paragraph}{}{32}{subsection.5.2.2}
-\contentsline {subsection}{\numberline {5.2.3}Figure 3}{32}{subsection.5.2.3}
+\contentsline {subsection}{\numberline {5.2.3}Time spent on the 100 tweets}{32}{subsection.5.2.3}
 \contentsline {paragraph}{}{32}{subsection.5.2.3}
-\contentsline {subsection}{\numberline {5.2.4}Figure 4}{33}{subsection.5.2.4}
+\contentsline {subsection}{\numberline {5.2.4}Time spent on tests B}{33}{subsection.5.2.4}
 \contentsline {paragraph}{}{33}{subsection.5.2.4}
-\contentsline {subsection}{\numberline {5.2.5}Figure 5}{34}{subsection.5.2.5}
+\contentsline {subsection}{\numberline {5.2.5}Number of likes on 100 tweets}{34}{subsection.5.2.5}
 \contentsline {paragraph}{}{34}{subsection.5.2.5}
-\contentsline {subsection}{\numberline {5.2.6}Figure 6}{35}{subsection.5.2.6}
+\contentsline {subsection}{\numberline {5.2.6}Number of likes in tests B}{35}{subsection.5.2.6}
 \contentsline {paragraph}{}{35}{subsection.5.2.6}
 \contentsline {section}{\numberline {5.3}Survey}{36}{section.5.3}
 \contentsline {paragraph}{}{36}{section.5.3}
 \contentsline {subsection}{\numberline {5.3.1}General questions}{36}{subsection.5.3.1}
 \contentsline {paragraph}{}{36}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Variation between test A and test B}{37}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.2}Variation between test A and B}{37}{subsection.5.3.2}
 \contentsline {paragraph}{}{37}{subsection.5.3.2}
 \contentsline {chapter}{\numberline {6}Discussion}{39}{chapter.6}
 \contentsline {paragraph}{}{39}{chapter.6}
@@ -107,4 +107,6 @@
 \contentsline {chapter}{Conclusion}{43}{chapter*.29}
 \contentsline {paragraph}{}{43}{chapter*.29}
 \contentsline {chapter}{Annexe}{45}{chapter*.30}
+\contentsline {paragraph}{}{45}{chapter*.30}
+\contentsline {paragraph}{}{46}{lstnumber.-6.42}
 \contentsline {chapter}{Bibliography}{48}{lstnumber.-7.82}
