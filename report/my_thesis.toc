@@ -1,25 +1,24 @@
 \select@language {english}
-\contentsline {chapter}{Acknowledgements}{i}{chapter*.1}
-\contentsline {chapter}{Abstract}{iii}{chapter*.2}
-\contentsline {paragraph}{}{iii}{chapter*.2}
-\contentsline {chapter}{List of figures}{vii}{section*.4}
-\contentsline {chapter}{List of tables}{ix}{section*.6}
-\contentsline {chapter}{Introduction}{1}{chapter*.8}
-\contentsline {paragraph}{}{1}{chapter*.8}
-\contentsline {chapter}{Related works}{3}{chapter*.9}
-\contentsline {paragraph}{}{3}{chapter*.9}
+\contentsline {chapter}{Abstract}{i}{chapter*.1}
+\contentsline {paragraph}{}{i}{chapter*.1}
+\contentsline {chapter}{List of figures}{v}{section*.3}
+\contentsline {chapter}{List of tables}{vii}{section*.5}
+\contentsline {chapter}{Introduction}{1}{chapter*.7}
+\contentsline {paragraph}{}{1}{chapter*.7}
+\contentsline {chapter}{Related works}{3}{chapter*.8}
+\contentsline {paragraph}{}{3}{chapter*.8}
 \contentsline {section}{\numberline {0.1}EdgeRank}{3}{section.0.1}
 \contentsline {paragraph}{}{3}{section.0.1}
 \contentsline {section}{\numberline {0.2}Twitter engagement}{4}{section.0.2}
 \contentsline {paragraph}{}{4}{section.0.2}
 \contentsline {section}{\numberline {0.3}Twitter redesign}{5}{section.0.3}
 \contentsline {paragraph}{}{5}{section.0.3}
-\contentsline {paragraph}{}{5}{figure.caption.13}
+\contentsline {paragraph}{}{5}{figure.caption.12}
 \contentsline {chapter}{\numberline {1}Motivations \& Evolution}{7}{chapter.1}
 \contentsline {paragraph}{}{7}{chapter.1}
 \contentsline {section}{\numberline {1.1}Motivations}{7}{section.1.1}
 \contentsline {paragraph}{}{7}{section.1.1}
-\contentsline {paragraph}{}{8}{figure.caption.14}
+\contentsline {paragraph}{}{8}{figure.caption.13}
 \contentsline {section}{\numberline {1.2}Project evolution}{8}{section.1.2}
 \contentsline {paragraph}{}{8}{section.1.2}
 \contentsline {chapter}{\numberline {2}Methodology}{11}{chapter.2}
@@ -65,16 +64,16 @@
 \contentsline {paragraph}{}{26}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Authentication}{26}{subsection.4.3.1}
 \contentsline {paragraph}{}{26}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Keyboard \& AJAX call}{26}{subsection.4.3.2}
-\contentsline {paragraph}{}{26}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Index.html}{27}{subsection.4.3.3}
-\contentsline {paragraph}{}{27}{subsection.4.3.3}
-\contentsline {section}{\numberline {4.4}API}{27}{section.4.4}
-\contentsline {paragraph}{}{27}{section.4.4}
+\contentsline {subsection}{\numberline {4.3.2}Keyboard \& AJAX call}{27}{subsection.4.3.2}
+\contentsline {paragraph}{}{27}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Index.html}{28}{subsection.4.3.3}
+\contentsline {paragraph}{}{28}{subsection.4.3.3}
+\contentsline {section}{\numberline {4.4}API}{28}{section.4.4}
+\contentsline {paragraph}{}{28}{section.4.4}
 \contentsline {subsection}{\numberline {4.4.1}Wrapper}{28}{subsection.4.4.1}
 \contentsline {paragraph}{}{28}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Request limit}{28}{subsection.4.4.2}
-\contentsline {paragraph}{}{28}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.2}Request limit}{29}{subsection.4.4.2}
+\contentsline {paragraph}{}{29}{subsection.4.4.2}
 \contentsline {section}{\numberline {4.5}Deployment}{29}{section.4.5}
 \contentsline {paragraph}{}{29}{section.4.5}
 \contentsline {chapter}{\numberline {5}Results}{31}{chapter.5}

@@ -58,17 +58,24 @@ First we will explain to you the general structure of the application. Then, we 
 
 \subsection{General structure}
 \paragraph{}
-The architecture of Twinder has evolved since the beginning of the project due to some constraints mainly coming from the API. Twitter limited the number of requests to the API, that is why, we chose the design that you can see above in figure [source]. \\
-1. connection
-2. redirect
-3. token is issued
-4. request API + token
-5. answer
-6. db
-7. db call
-8. answer with tweet ids
-9. Ajax call to enauth to get oembed tweet 
-10. oembed tweets
+The architecture of Twinder has evolved since the beginning of the project due to some constraints mainly coming from the API. Twitter limited the number of requests to the API, that is why, we chose the design that you can see above in figure \ref{fig:app_design}. \\
+
+\begin{figure}[h] 
+\centering 
+\includegraphics[width=1\columnwidth]{technical/AJAX} 
+\caption[Connection with Twinder]{ The graph shows us the interactions with the API.
+1. Connection to Twinder ;
+2. Redirect to OAuth serveur ;
+ 3. Token is issued ;
+  4. Request API + Token ;
+  5. Answer ;
+  6. Insert to db ;
+  7. Retrieve from db ;
+  8. Answer with tweets id ;
+  9. Ajax call to Open API to get embed tweet ;
+  10. Embed tweets.}
+\label{fig:app_design} 
+\end{figure}
 
 Thanks to the diagram, you can see the essential steps required for the application to retrieve tweets from the API. In order to be more complete, we should add strides, necessary for the continuity of the process. Indeed, we registered Twinder to Twitter as an official app which allow us to get tokens for the authentication of our users. In figure [source], you can see the run of the application which first starts with an Oauth delivered by a dedicate server, a token is issued. With this token, Twinder can request tweets to the API and then stores them in the database. As we explained previously, we now have 25 tweets times 10 friends in the database. After selecting 50 tweets to display, we send the list of ID's to the clients. Our method mentioned the fact that we should display embedded tweets in order to keep the context of the data. However, due to the API limits that we are going to explain after, we were not able to store the embed tweets directly in the database: we had to retrieve them from the client side. This step is represented by arrow 9 and 10, which show the AJAX call to the Twitter unauthenticated OEmbed endpoint. Indeed, as tweets are essentially public, it is possible to retrieve with their id, the embedded form without the constraint  of limited requests [source...].\\
 
