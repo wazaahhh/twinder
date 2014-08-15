@@ -9,13 +9,13 @@ First of all, we give an overview of the methodology, explaining the test that w
 \section{Big picture}
 
 \paragraph{}
-In order to measure our users' behaviors, we decided to run A/B testing with two different B tests. This allows us to compare our dependent variables which are the number of likes and the time spent on a tweet. To be sure that we only keep in consideration the two dependent variables, a simple graphical design is used. This design is exactly like a PowerPoint document, where the content of each slide is an embedded tweet. The user has to decide for each slide, if the user likes or dislikes a tweet by pressing one of two different keys on the keyboard. Based on this design, we create an A/B test with one initial experiment called "Calibration" (test A) and two others recording input the time (test B1) and the numbers of likes (test B2). Because of the unique design, we will explain how we select the tweets for the calibration part and the two other tests.\\
+In order to measure our users' behaviors, we decided to run A/B testing with two different B tests. This allows us to compare our dependent variables which are the number of likes and the time spent on a tweet. To be sure that we only keep in consideration the two dependent variables, a simple graphical design is used. This design is exactly like a PowerPoint document, where the content of each slide is an embedded tweet. The user has to decide for each slide, if the user likes or dislikes a tweet by pressing one of two different keys on the keyboard. Based on the design of Figure \ref{fig:a_b_diagram}, we create an A/B test with one initial experiment called "Calibration" (test A) and two others recording input the time (test-time-B) and the numbers of likes (test-like-B). Because of the unique design, we will explain how we select the tweets for the calibration part and the two other tests.
 
-\begin{figure}[h] 
+\begin{figure}[h]
 \centering 
 \includegraphics[width=1\columnwidth]{method/diagram} 
-\caption[Time spent of Social Media]{This clock shows the distribution of an hour online spent by US people. 16 min are on social network and forum. Source: \cite{s_clock}}
-\label{fig:clock1} 
+\caption[A/B test design]{The diagram shows the design of the A/B test. First, each user took the unique test A. After a short break of one minuit, half of the users did test-time-B. The rest of them did test-like-B.}
+\label{fig:a_b_diagram} 
 \end{figure}
 
 
@@ -23,7 +23,7 @@ In order to measure our users' behaviors, we decided to run A/B testing with two
 
 \paragraph{}
 As mentioned before, we decided to do a binary classification (like / dislike) of the tweets coming from the user's timeline. Because we use tweets from the timeline, it is assumed that users are interested by the content to a certain extent: they follow the writer of the tweet. In order to reduce external factors, we limit the timeline to a group of 10 people the person follows, called "friends". We select 10 friends randomly who published at least 25 tweets. Thanks to this data, we create a simple timeline that we suppose is similar to the real one. When a user logs in to Twinder, we retrieve in total 250 tweets: 25 tweets coming from 10 different friends. In order to keep the timeline chronological, we select the 25 most recent tweets from each user. \\
-In the motivation chapter, we said in the table [source] that the content of twitter is standardized with a maximum of 140 characters. However, the content can take several forms, like photos, videos, text and it starts to become more difficult to differentiate each case. We finally consider them similar to a pure text because the majority of the tweets with images contain text. After having considered the content of the tweets, the next problem that we faced was the layout of each tweet. Indeed, after displaying only the text of the tweets, we realized that the embed layout was something important for the user. It allow the person to contextualize the information and link it to twitter. (img difference of embed not). \\
+In the motivation chapter, we said in the table \ref{tab:table_analysis} that the content of twitter is standardized with a maximum of 140 characters. However, the content can take several forms, like photos, videos, text and it starts to become more difficult to differentiate each case. We finally consider them similar to a pure text because the majority of the tweets with images contain text. After having considered the content of the tweets, the next problem that we faced was the layout of each tweet. Indeed, after displaying only the text of the tweets, we realized that the embed layout was something important for the user. It allow the person to contextualize the information and link it to twitter. (img difference of embed not). \\
 The methodology of the experiment is based on the dataset assumption that we enumerated previously. The A/B test will be explained, it is composed of the test A (calibration) and the test B1 or B2.  
 
 \section{A/B Test}
