@@ -23,7 +23,7 @@ When we select the tweets for test-time-B based on the time spent on tweets in t
 test & time & likes \\ 
 \midrule
 test-like-B & 28.6\%	& 71.4\% \\
-test-time-B & 37.5\% & 25\% \\
+test-time-B & 37.5\% & 25.0\% \\
 \bottomrule 
 \end{tabular}
 \caption[More time \& likes]{This table shows the percentage of people who take more time and like more tweets in the second series that the first one.}
@@ -84,85 +84,98 @@ In general, the signal is pretty random with a slight decreasing tendency at the
 \subsection{Figure 4}
 
 \paragraph{}
-Figure [source] represents as previously, the moving average [source] of the average time spent on tweets in test-like-B (red curve) and tweets in test-time-B (blue curve). We observe that people spend more time in test-time-B than test-like-B. Moreover, after analyzing the data, we can see that the increase of the red curve close to tweet 39 is due a value 20 [source] time superior at the average of the other value.
+Figure \ref{fig:mob_b_t_l} represents as previously, the moving average of the average time spent on tweets in test-like-B (red curve) and tweets in test-time-B (blue curve). We observe that people spend more time in test-time-B than test-like-B. Moreover, after analyzing the data, we can see that the increase of the red curve close to tweet 39 is due to a value 20 [source] time superior at the average of the other value.
 Moreover, we can see that the blue signal is more random than the red one. Indeed, in series test-like-B, the variation of the signal is equal to 0.4 compare to the 0.9 for the other curve.\\
 The decision time is more constant in test-like-B, we can conclude that the decisions are more mechanical than on test-time-B. So,  people are less involve in test-like-B and their engagement time is less important. At the opposite, test-time-B has important variations between tweets decision time, it shows that the engagement is not the same for each tweets but it is in general higher than test-like-B.
 
 \begin{figure}[h] 
 \centering 
-\includegraphics[width=1\columnwidth]{results/time_both} 
-\caption[Average time on the 100 tweets]{The graph shows the time spent in average on the tweets of each series A and B. Test A are tweets from 1 to 50. Test B are tweets from 51 to 100.}
-\label{fig:time_both} 
+\includegraphics[width=1\columnwidth]{results/mob_b_t_l} 
+\caption[Time engagement in tests B]{The graph shows the time spent in average on tweets in both test-like-B (red) and test-time-B (blue). We notice that the blue line is in average higher than the red one. The time engagement is better in test-time-B.}
+\label{fig:mob_b_t_l} 
 \end{figure}
 
 
 \subsection{Figure 5}
 
 \paragraph{}
-Figure [source], show the moving average of the average of likes that receives tweets during an experience. As previously, tweets 1 to 50 are the test A and tweets 51 to 100 are test-like-B and test-time-B all together.
-We can see that the number of likes is almost random during the test. We notice a pick of likes at the beginning of the test B which results from test-like-B and is augmentation of tweets like of 18.52\% [source].
-We can conclude that people are classifying tweets until the end of both test. We could have imagine people pressing only L (like) or D (dislike) in order to finish faster.
+Figure \ref{fig:like_both}, show the moving average of the average of likes that receives tweets during an experience. As previously, tweets 1 to 50 are the test A and tweets 51 to 100 are test-like-B and test-time-B all together. We can see that the number of likes is almost random during the test. We notice a pick of likes at the beginning of the test B which results from test-like-B and is augmentation of tweets like of 18.52\% \ref{tab:mo_problem}. We can conclude that people are classifying tweets until the end of both test. We could have imagine people pressing only L (like) or D (dislike) in order to finish faster. \\ \\
 
 \begin{figure}[h] 
 \centering 
-\includegraphics[width=0.5\columnwidth]{technical/MVC} 
-\caption[Time spent of Social Media]{This clock shows the distribution of an hour online spent by US people. 16 min are on social network and forum. Source: \cite{s_clock}}
-\label{fig:tinder} 
+\includegraphics[width=1\columnwidth]{results/like_both} 
+\caption[Average like on the 100 tweets]{The graph shows the average number of likes on each series A and B. Test A are tweets from 1 to 50. Test B are tweets from 51 to 100.}
+\label{fig:like_both} 
 \end{figure}
 
 \subsection{Figure 6}
 
 \paragraph{}
-figure [source], gives us the same information that figure [source] but this time we measure the average of likes and not the time. The curve red shows us the moving average of the normalized number of likes in the test-like-B. Respectively, the curve bleu represents the same information in the test-time-B.
-We notice that when we select tweets based on the number of likes in test A, we have a higher results than based on the time spent on tweets. This graphic illustres the results of the table [source] which reveal a positive rateLike (18.52\%) for test-like-B and negative (-9.14\% ) for test-time-B.
+Figure \ref{fig:mob_b_t_l_2}, gives us the same information that Figure \ref{fig:mob_b_t_l}but this time we measure the average of likes and not the time. The curve red shows us the moving average of the normalized number of likes in the test-like-B. Respectively, the curve bleu represents the same information in the test-time-B. We notice that when we select tweets based on the number of likes in test A, we have a higher results than based on the time spent on tweets. This graphic illustres the results of the table [source] which reveal a positive rateLike (18.52\%) for test-like-B and negative (-9.14\% ) for test-time-B. \\\\\\\\\\\\\\\\
 
 \begin{figure}[h] 
 \centering 
-\includegraphics[width=0.5\columnwidth]{technical/MVC} 
-\caption[Time spent of Social Media]{This clock shows the distribution of an hour online spent by US people. 16 min are on social network and forum. Source: \cite{s_clock}}
-\label{fig:tinder} 
+\includegraphics[width=1\columnwidth]{results/mob_b_t_l_2} 
+\caption[Number of likes in tests B]{The graph shows the average number of likes in both test-like-B (red) and test-time-B (blue). We notice that the red line is in average higher than the blue one. The interest is better in test-like-B.}
+\label{fig:mob_b_t_l_2} 
 \end{figure}
+
 
 \section{Survey}
 
 \paragraph{}
-After analyzing data from the experiment, we are going to give you the results of the survey that candidate had to fill out at the end of the test. We will give general results about how the 15 people use Twitter. Next, we will analyze the variation of the results between the test A and tests B. The results of the survey are also available on the Github repository [source].
+After analyzing data from the experiment, we are going to give you the results of the survey that candidate had to fill out at the end of the test. We will give general results about how the 15 people use Twitter. Next, we will analyze the variation of the results between the test A and tests B. The results of the survey are also available on the Github repository \cite{tw_github}.
 
 \subsection{General questions}
 
 \paragraph{}
 In order to have a better understanding of the results of the experiment, it is interesting to have an average profile of our candidates. To do this profile, we asked three general questions about Twitter, then we can interpreted the average score:
-[uneliste]
-how often do you use Twitter (1: less than once a week / 5:more than once a day) ?
-The average is 3.7, we conclude that our candidates are daily users. They have a good understanding of the service.
-Do you usually find the content interesting on twitter ? (1:no /5:yes)
-We obtain a result of 3.4 over 5, which is just above the average. Users choose the content that they want on their timeline because they select people that they are following.
-Do you usually feel engaged when you are looking at your timeline on Twitter ? (1:no,5:yes)
-The result is 3 over 5. On one side, we can conclude that people are not so much engaged on Twitter. On the other side, we can say that people cannot easily measure their engagement on Twitter [source]
+
+\begin{itemize}
+	\item \textit{How often do you use Twitter ? (1: less than once a week / 5:more than once a day)}: The average is 3.7, we conclude that our candidates are daily users. They have a good understanding of the service.
+	\item \textit{Do you usually find the content interesting on twitter ? (1:no /5:yes)}:We obtain a result of 3.4 over 5, which is just above the average. Users choose the content that they want on their timeline because they select people that they are following.
+	\item \textit{Do you usually feel engaged when you are looking at your timeline on Twitter ? (1:no,5:yes)}: The result is 3 over 5. On one side, we can conclude that people are not so much engaged on Twitter. On the other side, we can say that people cannot easily measure their engagement on Twitter \cite{s_engag_measure}.
+\end{itemize}
 
 In conclusion, our average candidate is a daily twitter user who find the content of his timeline enough interesting to look at it every day. However, his engagement is something unclear and the user spend probably more time on Facebook than Twitter. We will now analyse the results between the test A and test B.
 
 
 \subsection{Variation between test A and test B}
-The table below gives us the variation of engagement, interest and tiredness between test-like-B and test-like-A respectively test-time-B and test-time-A. We see that variation of the interest is in agreement with the previous results [source]. Indeed, the interest decreases of 3.8\% in test-time-B and increase of 26\% in test-like-B. The engagement is almost two time higher in test-like-B and we can put in parallel this engagement and the tiredness of the user after the test-like-B. Then, users are more engagement but the price is significatively high, 38\% more tired. As for test-time-B, the engagement increases of 10\% and candidates are 8.7\% less tired than in test-time-A.
 
-\begin{figure}[h] 
-\centering 
-\includegraphics[width=0.5\columnwidth]{technical/MVC} 
-\caption[Time spent of Social Media]{This clock shows the distribution of an hour online spent by US people. 16 min are on social network and forum. Source: \cite{s_clock}}
-\label{fig:tinder} 
-\end{figure}
+\paragraph{}
+The table \ref{tab:surv_var}  below gives us the variation of engagement, interest and tiredness between test-like-B and test-like-A respectively test-time-B and test-time-A. We see that variation of the interest is in agreement with the previous results \ref{fig:mob_b_t_l_2}. Indeed, the interest decreases of 3.8\% in test-time-B and increase of 26\% in test-like-B. The engagement is almost two time higher in test-like-B and we can put in parallel this engagement and the tiredness of the user after the test-like-B. Then, users are more engagement but the price is significatively high, 38\% more tired. As for test-time-B, the engagement increases of 10\% and candidates are 8.7\% less tired than in test-time-A.
 
-We finally asked to the candidates: How many tweets are in the series ?\\ 
+\begin{table}[h]
+\centering
+\begin{tabular}{cccc}
+\toprule
+Test & Engagement & Interest & Tiredness \\ 
+\midrule
+test-like-B & 20.00\% & 26.32\% & -37.50\% \\
+test-time-B & 8.33\% & -3.85\% & -8.70\%\\
+\bottomrule 
+\end{tabular}
+\caption[Survey - variation]{This table shows the variation of three parameters: engagement, interest and tiredness between test A and tests B. These values are coming from the survey  [source]. }
+\label{tab:surv_var}
+\end{table}
 
-\begin{figure}[h] 
-\centering 
-\includegraphics[width=0.5\columnwidth]{technical/MVC} 
-\caption[Time spent of Social Media]{This clock shows the distribution of an hour online spent by US people. 16 min are on social network and forum. Source: \cite{s_clock}}
-\label{fig:tinder} 
-\end{figure}
+We finally asked to the candidates: \textit{How many tweets are in the series ?}\\ 
 
-In general, no matter if it is test-like-B or test-time-B, approximatively 50\% of the candidate answer the correct one: Equal. Now if we consider the statement "More in the first one", we notice that the result is higher for test-time-B. We can link this result to the fact that user are less tired after this test than the user.
+\begin{table}[h]
+\centering
+\begin{tabular}{cccc}
+\toprule
+Test & More in $1^{st} series$ & More in $2^{nd} series$ & Equal \\ 
+\midrule
+test-like-B & 29.0\% & 29.0\% & 43.0\% \\
+test-time-B & 37.5\% & 12.5\% & 50.0\%\\
+\bottomrule 
+\end{tabular}
+\caption[Survey - number of tweets]{This table shows the percentage of people who though that the number of tweets between the series was different or equal.}
+\label{tab:more_tweets}
+\end{table}
+
+In general, no matter if it is test-like-B or test-time-B, approximatively 50\% of the candidate answer the correct one: Equal. Now if we consider the statement \textit{"More in the first one"}, we notice that the result is higher for test-time-B. We can link this result to the fact that user are less tired after this test than the user.
 
 
 

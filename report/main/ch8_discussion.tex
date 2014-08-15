@@ -5,15 +5,21 @@ We previously presented and analysed the data recorded by the web application an
 
 \paragraph{}
 As a result of our previous test, we had a good understanding of how the application affects the actions of users. To measure the performance of Twinder we recorded the following values: number of tweets liked per series and time spent on the series. Engagement time did not increase between test A and test B but saw a boost in interest of the series test-like-B. Then we see that it is easier to increase the number of likes per series than the time spend on it. However, the augmentation is not without some sacrifices, indeed candidates who took test-like-B were more tired and spent less time on the series than users on test-time-B. So, test-time-B is interesting in the way that users spent almost the same time as test-time-A even if the series is less interesting to them. We will propose after some updates of the experiment in order to improve the time and the interest. \\
-Apart from the two metrics studied, it was interesting to run the experiment and see how users actually utilize Twitter's service. We differentiated the users into two categories: [uneliste]
-Superficiales (users 4 \& 5 ): they usually do not read tweets and check only the name of the writers. On average, they spend one second on each tweet and pay more attention to tweets with pictures, videos or hashtags. Their engagement time is hard to increase if we consider only tweets with text.
-Careful (users 6 \& 12): they check twitter less often than the superficiales but do read all the tweets more carefully. Their engagement is high and it is possible to augment it if the content is well selected. (ie: User 6 was so engaged that they started to interact with me and told me to read it ).
+Apart from the two metrics studied, it was interesting to run the experiment and see how users actually utilize Twitter's service. We differentiated the users into two categories:
 
-After interpreting the results, we are going to talk about the different problems that we had with the design and the application.
+\begin{itemize}
+	\item \textbf{Superficiales (users 4 \& 5 )}: They usually do not read tweets and check only the name of the writers. On average, they spend one second on each tweet and pay more attention to tweets with pictures, videos or hashtags. Their engagement time is hard to increase if we consider only tweets with text.
+	\item \textbf{Careful (users 6 \& 12)}: They check twitter less often than the superficiales but do read all the tweets more carefully. Their engagement is high and it is possible to augment it if the content is well selected. (ie: User 6 was so engaged that they started to interact with me and told me to read it ). After interpreting the results, we are going to talk about the different problems that we had with the design and the application.
+\cite{s_engag_measure}.
+\end{itemize}
 
 \paragraph{}
 Even though the application brought explanations of how people look at tweets we noticed some limits and problem links to the experimental design. Indeed, even if it is not too significative on the results, classifying 100 tweets is a big ask in terms of concentration and can bore people. The problem comes from the fact that our sample set included 10 friends and so the content of tweets were limited especially during the second part of the experiment (test-like-B and test-time-B). One of the users told us at the end of the test:
-'I know exactly what people are posting on twitter (e.g. VC's, Business writers, etc). The first series was enjoyable but the second one was repetitive in content and similar to the first one without variation on content. It bothered me.'
+
+\begin{center}
+\textit{"I know exactly what people are posting on twitter (e.g. VC's, Business writers, etc). The first series was enjoyable but the second one was repetitive in content and similar to the first one without variation on content. It bothered me."}
+\end{center}
+
 After these general comments on our method, we can say with our data that people are not fully concentrated at the beginning of the test A. This problem arises especially with test-time-B and the ratio between the time spend on the first test and the second one.
 The last limit to the experiment is the parameters that we choose to determine the interest and the engagement of the users. This approach is binary and prevents us to get more information from users, especially if they do not have an opinion on the subject.
 These limits impacted the project and we will try in the next paragraph to bring about improvements to the design of the application.
