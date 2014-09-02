@@ -1,0 +1,112 @@
+\select@language {english}
+\contentsline {chapter}{Abstract}{i}{chapter*.1}
+\contentsline {paragraph}{}{i}{chapter*.1}
+\contentsline {chapter}{List of figures}{v}{section*.3}
+\contentsline {chapter}{List of tables}{vii}{section*.5}
+\contentsline {chapter}{Introduction}{1}{chapter*.7}
+\contentsline {paragraph}{}{1}{chapter*.7}
+\contentsline {chapter}{Related works}{3}{chapter*.8}
+\contentsline {paragraph}{}{3}{chapter*.8}
+\contentsline {section}{\numberline {0.1}EdgeRank}{3}{section.0.1}
+\contentsline {paragraph}{}{3}{section.0.1}
+\contentsline {section}{\numberline {0.2}Twitter engagement}{4}{section.0.2}
+\contentsline {paragraph}{}{4}{section.0.2}
+\contentsline {section}{\numberline {0.3}Twitter redesign}{5}{section.0.3}
+\contentsline {paragraph}{}{5}{section.0.3}
+\contentsline {paragraph}{}{5}{figure.caption.12}
+\contentsline {chapter}{\numberline {1}Motivations \& Evolution}{7}{chapter.1}
+\contentsline {paragraph}{}{7}{chapter.1}
+\contentsline {section}{\numberline {1.1}Motivations}{7}{section.1.1}
+\contentsline {paragraph}{}{7}{section.1.1}
+\contentsline {paragraph}{}{8}{figure.caption.13}
+\contentsline {section}{\numberline {1.2}Project evolution}{8}{section.1.2}
+\contentsline {paragraph}{}{8}{section.1.2}
+\contentsline {chapter}{\numberline {2}Methodology}{11}{chapter.2}
+\contentsline {paragraph}{}{11}{chapter.2}
+\contentsline {section}{\numberline {2.1}Big picture}{11}{section.2.1}
+\contentsline {paragraph}{}{11}{section.2.1}
+\contentsline {section}{\numberline {2.2}Dataset}{12}{section.2.2}
+\contentsline {paragraph}{}{12}{section.2.2}
+\contentsline {section}{\numberline {2.3}A/B Test}{12}{section.2.3}
+\contentsline {paragraph}{}{12}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Test A : the calibration }{12}{subsection.2.3.1}
+\contentsline {paragraph}{}{12}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Tests B}{13}{subsection.2.3.2}
+\contentsline {paragraph}{}{13}{subsection.2.3.2}
+\contentsline {subsubsection}{\numberline {2.3.2.1}Test-time-B}{13}{subsubsection.2.3.2.1}
+\contentsline {paragraph}{}{13}{subsubsection.2.3.2.1}
+\contentsline {subsubsection}{\numberline {2.3.2.2}Test-Like-B}{14}{subsubsection.2.3.2.2}
+\contentsline {paragraph}{}{14}{subsubsection.2.3.2.2}
+\contentsline {chapter}{\numberline {3}Experimental settings}{17}{chapter.3}
+\contentsline {paragraph}{}{17}{chapter.3}
+\contentsline {section}{\numberline {3.1}The design}{17}{section.3.1}
+\contentsline {paragraph}{}{17}{section.3.1}
+\contentsline {section}{\numberline {3.2}Data acquisition}{18}{section.3.2}
+\contentsline {chapter}{\numberline {4}Technical Implementation}{21}{chapter.4}
+\contentsline {paragraph}{}{21}{chapter.4}
+\contentsline {section}{\numberline {4.1}Languages}{21}{section.4.1}
+\contentsline {paragraph}{}{21}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Back-end}{21}{subsection.4.1.1}
+\contentsline {paragraph}{}{21}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Front-end}{22}{subsection.4.1.2}
+\contentsline {paragraph}{}{22}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Frameworks}{22}{subsection.4.1.3}
+\contentsline {paragraph}{}{22}{subsection.4.1.3}
+\contentsline {section}{\numberline {4.2}Structure}{23}{section.4.2}
+\contentsline {paragraph}{}{23}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}General structure}{23}{subsection.4.2.1}
+\contentsline {paragraph}{}{23}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Important files}{24}{subsection.4.2.2}
+\contentsline {paragraph}{}{24}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Database}{25}{subsection.4.2.3}
+\contentsline {paragraph}{}{25}{subsection.4.2.3}
+\contentsline {section}{\numberline {4.3}Parts of the code that is interesting}{26}{section.4.3}
+\contentsline {paragraph}{}{26}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Authentication}{26}{subsection.4.3.1}
+\contentsline {paragraph}{}{26}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Keyboard \& AJAX call}{27}{subsection.4.3.2}
+\contentsline {paragraph}{}{27}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Index.html}{28}{subsection.4.3.3}
+\contentsline {paragraph}{}{28}{subsection.4.3.3}
+\contentsline {section}{\numberline {4.4}API}{28}{section.4.4}
+\contentsline {paragraph}{}{28}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Wrapper}{28}{subsection.4.4.1}
+\contentsline {paragraph}{}{28}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Request limit}{29}{subsection.4.4.2}
+\contentsline {paragraph}{}{29}{subsection.4.4.2}
+\contentsline {section}{\numberline {4.5}Deployment}{29}{section.4.5}
+\contentsline {paragraph}{}{29}{section.4.5}
+\contentsline {chapter}{\numberline {5}Results}{31}{chapter.5}
+\contentsline {paragraph}{}{31}{chapter.5}
+\contentsline {section}{\numberline {5.1}Explanations}{31}{section.5.1}
+\contentsline {paragraph}{}{31}{section.5.1}
+\contentsline {section}{\numberline {5.2}Twinder results}{31}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}More likes and more time}{31}{subsection.5.2.1}
+\contentsline {paragraph}{}{31}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Time and Like rate}{32}{subsection.5.2.2}
+\contentsline {paragraph}{}{32}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Time spent on the 100 tweets}{32}{subsection.5.2.3}
+\contentsline {paragraph}{}{32}{subsection.5.2.3}
+\contentsline {subsection}{\numberline {5.2.4}Time spent on tests B}{33}{subsection.5.2.4}
+\contentsline {paragraph}{}{33}{subsection.5.2.4}
+\contentsline {subsection}{\numberline {5.2.5}Number of likes on 100 tweets}{34}{subsection.5.2.5}
+\contentsline {paragraph}{}{34}{subsection.5.2.5}
+\contentsline {subsection}{\numberline {5.2.6}Number of likes in tests B}{35}{subsection.5.2.6}
+\contentsline {paragraph}{}{35}{subsection.5.2.6}
+\contentsline {section}{\numberline {5.3}Survey}{36}{section.5.3}
+\contentsline {paragraph}{}{36}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}General questions}{36}{subsection.5.3.1}
+\contentsline {paragraph}{}{36}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Variation between test A and B}{37}{subsection.5.3.2}
+\contentsline {paragraph}{}{37}{subsection.5.3.2}
+\contentsline {chapter}{\numberline {6}Discussion}{39}{chapter.6}
+\contentsline {paragraph}{}{39}{chapter.6}
+\contentsline {paragraph}{}{39}{chapter.6}
+\contentsline {paragraph}{}{40}{chapter.6}
+\contentsline {paragraph}{}{40}{chapter.6}
+\contentsline {chapter}{Conclusion}{43}{chapter*.29}
+\contentsline {paragraph}{}{43}{chapter*.29}
+\contentsline {chapter}{Annexe}{45}{chapter*.30}
+\contentsline {paragraph}{}{45}{chapter*.30}
+\contentsline {paragraph}{}{46}{lstnumber.-6.42}
+\contentsline {chapter}{Bibliography}{49}{figure.caption.31}

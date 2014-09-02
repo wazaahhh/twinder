@@ -3,7 +3,7 @@
 %		My Thesis
 %
 %		EDOC Template
-%		2011
+%		2014
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -18,10 +18,9 @@
 \begin{document}
 \frontmatter
 \input{head/titlepage.tex}
+\include{head/signature}
 \include{head/dedication}
 \setcounter{page}{0}
-\input{head/acknowledgements}
-\include{head/preface}
 \include{head/abstracts}
 
 \tableofcontents
@@ -46,20 +45,25 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mainmatter
 \include{main/ch1_introduction}
-\include{main/ch2_figures_tables}
-\include{main/ch3_math}
-\include{main/ch4_more_text}
+\include{main/ch2_background}
+\include{main/ch3_motivations}
+\include{main/ch4_method}
+\include{main/ch5_experimental_settings}
+\include{main/ch6_technical}
+\include{main/ch7_results}
+\include{main/ch8_discussion}
+\include{main/ch9_conclusion}
+\include{main/ch10_annex}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% TAIL: Bibliography, Appendix, CV
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\include{tail/appendix}
-\backmatter
 \include{tail/biblio}
+\backmatter
 % Add your glossary here
 % Add your index here
 % Photographic credits (list of pictures&images that have been used with names of the person holding the copyright for them)
-\include{tail/cv}
 
 \end{document}

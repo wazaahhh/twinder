@@ -1,0 +1,37 @@
+\chapter{Discussion}
+
+\paragraph{}
+We previously presented and analysed the data recorded by the web application and the survey. It gave us a better understanding of the candidates' behaviors and allowed us to see how our A/B test affected length of engagement and interest. In this section, we will summarize the results and share other details learned about our users' perspective. Next, we will discuss some limitations of our design. Finally, we will provide recommendations for more accurate readings in the future.
+
+\paragraph{}
+As a result of our previous test, we had a good understanding of how the application affects the actions of users. To measure the performance of Twinder we recorded the following values: number of tweets liked per series and time spent on the series. Engagement time did not increase between test A and test B but saw a boost in interest of the series test-like-B. Then we see that it is easier to increase the number of likes per series than the time spend on it. However, the augmentation is not without some sacrifices, indeed candidates who took test-like-B were more tired and spent less time on the series than users on test-time-B. So, test-time-B is interesting in the way that users spent almost the same time as test-time-A even if the series is less interesting to them. We will propose after some updates of the experiment in order to improve the time and the interest. \\
+Apart from the two metrics studied, it was interesting to run the experiment and see how users actually utilize Twitter's service. We differentiated the users into two categories:
+
+\begin{itemize}
+	\item \textbf{Superficiales (users 4 \& 5 )}: They usually do not read tweets and check only the name of the writers. On average, they spend one second on each tweet and pay more attention to tweets with pictures, videos or hashtags. Their engagement time is hard to increase if we consider only tweets with text.
+	\item \textbf{Careful (users 6 \& 12)}: They check twitter less often than the superficiales but do read all the tweets more carefully. Their engagement is high and it is possible to augment it if the content is well selected. (ie: User 6 was so engaged that they started to interact with me and told me to read it ). After interpreting the results, we are going to talk about the different problems that we had with the design and the application.
+\cite{s_engag_measure}.
+\end{itemize}
+
+\paragraph{}
+Even though the application brought explanations of how people look at tweets we noticed some limits and problem links to the experimental design. Indeed, even if it is not too significative on the results, classifying 100 tweets is a big ask in terms of concentration and can bore people. The problem comes from the fact that our sample set included 10 friends and so the content of tweets were limited especially during the second part of the experiment (test-like-B and test-time-B). One of the users told us at the end of the test:
+
+\begin{center}
+\textit{"I know exactly what people are posting on twitter (e.g. VC's, Business writers, etc). The first series was enjoyable but the second one was repetitive in content and similar to the first one without variation on content. It bothered me."}
+\end{center}
+
+After these general comments on our method, we can say with our data that people are not fully concentrated at the beginning of the test A. This problem arises especially with test-time-B and the ratio between the time spend on the first test and the second one.
+The last limit to the experiment is the parameters that we choose to determine the interest and the engagement of the users. This approach is binary and prevents us to get more information from users, especially if they do not have an opinion on the subject.
+These limits impacted the project and we will try in the next paragraph to bring about improvements to the design of the application.
+
+\paragraph{}
+We will provide some improvements to the process as discussed previously.First, we should not take into consideration the first 5 tweets of test A. They would be a pre-test in order to let users adapt to Twinder and the concept of classification. One of the most important modifications would be to filter out tweets that include anything but text, i.e. no images, videos, etc. The related work on Twitter that we found was showing that the engagement on images is better than on text. For your model, it was not possible to take it in consideration.
+It would be interesting to develop a mobile app based on Twinder and measure the engagement on it. Users would utilize it to visualized tweets one-by-one and then be able to sort their Twitter timeline at the same time. Then, it would be possible to measure time of engagement during different periods of the day (e.g. public transport, work, home, etc). \\
+In order to improve at the same time interest and time engaged we could improve the formula which ranks the 10 friends in test-like-B and test-time-B. A combinaison of time spent and number of likes would be easy to develop and test in the same way that we did previously. By fine tuning, it would be possible to find a good compromise and then increase the interest and the engagement of the users. \\
+Another possibility would be to design a new application which compares the time spent on a list of tweets as Twitter displays it, then do the calibration with Twinder and finally show the user a new sorted list. This tryptic would be a concrete case and would show if Twinder really has an impact on the list. \\
+Previously we noticed that the metrics used are not completely reliable. It would be interesting to measure the focus of users with a better approach and then link it to the engagement of the candidates. Indeed, it would be interesting to measure the users' brainwaves during the tests. Many applications could result from these new data sets and they would be a better predictor for the decisions of a user.
+
+
+
+
+

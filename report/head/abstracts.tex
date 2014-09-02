@@ -1,46 +1,11 @@
-%\begingroup
-%\let\cleardoublepage\clearpage
-
-
-% English abstract
 \cleardoublepage
 \chapter*{Abstract}
-%\markboth{Abstract}{Abstract}
-\addcontentsline{toc}{chapter}{Abstract (English/Français/Deutsch)} % adds an entry to the table of contents
-% put your text here
-\lipsum[1-2]
+\addcontentsline{toc}{chapter}{Abstract} % adds an entry to the table of contents
+
+\paragraph{}
+Once a social networking service has as large a number of users as Facebook, Twitter or Linkedin does, the new metric necessary to measure their progress is engagement. This value is not easy to measure, and does not have a unique formula; each service has its own based on the particular feature it has (retweet, favorite, etc.). Moreover, it is very difficult for companies to measure the time spent on individual posts like tweets. With this work, we would like to understand better the engagement with Twitter, and then try to increase the interest and the time spent on the platform. \\
+To solve this problem, we created a new way to visualize tweets one-by-one. Using Twinder, the dedicated web application, it was possible to create an A/B test that recorded the time spent on tweets, and the decisions of users as to whether they liked each tweet. One unique calibration test A (a series of 50 tweets) allowed us to generate two tests B, which half of the candidates were doing. In test-like-B, the more a source of tweets was liked in test A, the more we displayed tweets from it. In test-time-B, the more time users spent on tweets coming from a source, the more we displayed tweets from it. We then used the time spent on tweets and the number of likes of the test A to generate tests B. After running this experiment and creating a survey, we realized that people in both configurations test-A/test-like-B and test-A/test-time-B are spending less time in the second series than the first one. However, in the first configuration we noticed a decrease of 24.20\% of the time spent, compared to a decrease of only 2.51\% in the second one. At the same, we measured the number of likes per series, which is a good indicator of interest. At the opposite, users who did test-like-B were way more interest in this series than users who did test-time-B. Indeed, the first configuration received 18.52\% more likes than test A, and the second configuration received 9.14\% less likes than test A. In parallel, the results of the survey allowed us to see that users who did test-like-B were more tired than the others, even if they seems more interested. \\
+We did not succeed in increasing the engagement with a series of tweets, but we noticed that it is easy to increase the interest in a series. However, the interest cost a lot for the user, who is more tired, and spends less time in test-like-B. Finally, we found a way to keep the time engaged almost stable (-2.51\%) despite the decrease of the interest (-9.14\%).
+
 \vskip0.5cm
-Key words: 
-%put your text here
-
-
-% German abstract
-\begin{otherlanguage}{german}
-\cleardoublepage
-\chapter*{Zusammenfassung}
-%\markboth{Zusammenfassung}{Zusammenfassung}
-% put your text here
-\lipsum[1-2]
-\vskip0.5cm
-Stichwörter: 
-%put your text here
-\end{otherlanguage}
-
-
-
-
-% French abstract
-\begin{otherlanguage}{french}
-\cleardoublepage
-\chapter*{Résumé}
-%\markboth{Résumé}{Résumé}
-% put your text here
-\lipsum[1-2]
-\vskip0.5cm
-Mots clefs: 
-%put your text here
-\end{otherlanguage}
-
-
-%\endgroup			
-%\vfill
+Key words: Engagement, Interest, HCI, User Experience.

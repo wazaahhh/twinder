@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^survey/$', views.survey, name='survey'),
     url(r'^tweets/$', views.index2, name='index2'),
+    url(r'^aime/$', views.index3, name='index3'),
     url(r'^stat/$', views.statistics, name='stat'),
     url(r'^usure/$', views.usure, name='usure'),
 )
