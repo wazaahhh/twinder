@@ -13,7 +13,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.template.context import RequestContext
 from social.apps.django_app.default.models import UserSocialAuth
 from settings import SOCIAL_AUTH_TWITTER_KEY, SOCIAL_AUTH_TWITTER_SECRET
-from datetime import timedelta
+from datetime import timedelta,datetime, date, time
 import math
 
 from models import *
@@ -371,47 +371,6 @@ def statistics(request):
         les_stats_2=time_spent(la_serie_2)
 
     
-    '''print('-----serie1------')
-    matrix_t=les_stats_1['time_matrix']
-    total_time=0
-    sum_like=0
-
-
-    for action in la_serie_1:
-        if action.left:
-            sum_like+=1
-
-
-    for friend in les_stats_1['friends']:
-        if friend in matrix_t:
-            #print(matrix_t[friend])
-            total_time += matrix_t[friend]
-        else:
-            print(0)
-
-    print(current_user.user_name)
-    print(total_time)
-    #print(sum_like)
-    print('---serie2----')
-    la_serie_2 = UneSerie4.objects.filter(user=current_user).order_by('created_at').all()[51:102]
-    les_stats_2=time_spent(la_serie_2)
-
-    matrix=les_stats_2['time_matrix']
-    total_time=0
-    sum_like=0
-
-    for action in la_serie_2:
-        if action.left:
-            sum_like+=1
-
-    for friend in les_stats_2['friends']:
-        if friend in matrix:
-            #print(matrix[friend])
-            total_time += matrix[friend]
-        else:
-            print(0)
-    print(total_time)
-    #print(sum_like)'''
     return HttpResponse('yolo')
 
 #-------------- AJAX Call front-end -----------------
@@ -432,9 +391,13 @@ def mark(request):
             current_user = UnUser.objects.get(user_name=request.user)
 
             if direction == 'left':
+                print('left')
+                print(datetime.datetime.now())
                 add_tweet = UneSerie4.objects.create(left=True,txt_length=txt_length,friend_id=friend_id,tweet_id=tweet_id,user=current_user)
                 return HttpResponse('True')
             elif direction == 'right':
+                print('right')
+                print(datetime.datetime.now())
                 add_tweet = UneSerie4.objects.create(right=True,txt_length=txt_length,friend_id=friend_id,tweet_id=tweet_id,user=current_user)
                 return HttpResponse('True')
             else:
