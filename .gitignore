@@ -57,3 +57,5 @@ example
 *.pyc
 staticfiles
 
+
+*.gz

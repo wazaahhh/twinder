@@ -105,8 +105,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+
+#import dj_database_url
+#DATABASES['default'] =  dj_database_url.config()
 
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
@@ -141,4 +142,3 @@ LOGIN_REDIRECT_URL = '/'
 CORS_ORIGIN_WHITELIST = (
         'api.twitter.com'
 )
-
